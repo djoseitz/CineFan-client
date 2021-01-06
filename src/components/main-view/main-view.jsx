@@ -4,9 +4,17 @@ import { MovieCard } from '../movie-card/movie-card';
 
 export class MainView extends React.Component {
 
+
+  // Gives "movies" an initial state, since render runs before componentDidMount
+  constructor(props) {
+    super(props)
+    this.state = {
+      movies: []
+    }
+  }
   // One of the "hooks" available in a React Component
   componentDidMount() {
-    axios.get('<my-api-endpoint/movies>')
+    axios.get('https://cinefandb.herokuapp.com/movies')
       .then(response => {
         // Assign the result to the state
         this.setState({

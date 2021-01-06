@@ -31677,21 +31677,28 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(MainView);
 
-  function MainView() {
+  // Gives "movies" an initial state, since render runs before componentDidMount
+  function MainView(props) {
+    var _this;
+
     _classCallCheck(this, MainView);
 
-    return _super.apply(this, arguments);
-  }
+    _this = _super.call(this, props);
+    _this.state = {
+      movies: []
+    };
+    return _this;
+  } // One of the "hooks" available in a React Component
+
 
   _createClass(MainView, [{
     key: "componentDidMount",
-    // One of the "hooks" available in a React Component
     value: function componentDidMount() {
-      var _this = this;
+      var _this2 = this;
 
-      _axios.default.get('<my-api-endpoint/movies>').then(function (response) {
+      _axios.default.get('https://cinefandb.herokuapp.com/movies').then(function (response) {
         // Assign the result to the state
-        _this.setState({
+        _this2.setState({
           movies: response.data
         });
       }).catch(function (error) {
