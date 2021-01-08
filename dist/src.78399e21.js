@@ -31686,10 +31686,13 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(MovieView, [{
+    key: "refreshPage",
+    value: function refreshPage() {
+      window.location.reload(false);
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       var movie = this.props.movie;
       if (!movie) return null;
       return _react.default.createElement("div", {
@@ -31724,11 +31727,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, movie.Director.Name)), _react.default.createElement("div", {
         className: "back-button"
       }, _react.default.createElement("button", {
-        onClick: function onClick() {
-          return _this2.setState({
-            selectedMovie: null
-          });
-        }
+        onClick: this.refreshPage
       }, "Back to All Movies")));
     }
   }]);

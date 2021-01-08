@@ -8,6 +8,10 @@ export class MovieView extends React.Component {
     this.state = {};
   }
 
+  refreshPage() {
+    window.location.reload(false);
+  }
+
   render() {
     const { movie } = this.props;
 
@@ -34,7 +38,7 @@ export class MovieView extends React.Component {
           <span className="value">{movie.Director.Name}</span>
         </div>
         <div className="back-button">
-          <button onClick={() => this.setState({ selectedMovie: null })}>
+          <button onClick={this.refreshPage}>
             Back to All Movies
           </button>
         </div>
