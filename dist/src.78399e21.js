@@ -31688,6 +31688,8 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
   _createClass(MovieView, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var movie = this.props.movie;
       if (!movie) return null;
       return _react.default.createElement("div", {
@@ -31719,7 +31721,15 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Director: "), _react.default.createElement("span", {
         className: "value"
-      }, movie.Director.Name)));
+      }, movie.Director.Name)), _react.default.createElement("div", {
+        className: "back-button"
+      }, _react.default.createElement("button", {
+        onClick: function onClick() {
+          return _this2.setState({
+            selectedMovie: null
+          });
+        }
+      }, "Back to All Movies")));
     }
   }]);
 
@@ -31788,7 +31798,16 @@ var MainView = /*#__PURE__*/function (_React$Component) {
   _createClass(MainView, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      /* ... */
+      var _this2 = this;
+
+      _axios.default.get('https://cinefandb.herokuapp.com/movies').then(function (response) {
+        // Assign the result to the state
+        _this2.setState({
+          movies: response.data
+        });
+      }).catch(function (error) {
+        console.log(error);
+      });
     }
   }, {
     key: "onMovieClick",
@@ -31800,7 +31819,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var _this$state = this.state,
           movies = _this$state.movies,
@@ -31818,7 +31837,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           key: movie._id,
           movie: movie,
           onClick: function onClick(movie) {
-            return _this2.onMovieClick(movie);
+            return _this3.onMovieClick(movie);
           }
         });
       }));
@@ -31990,7 +32009,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51581" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56761" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

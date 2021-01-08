@@ -1,1 +1,1 @@
-{"version":3,"sources":["index.scss"],"names":[],"mappings":"AAEA;EACE,OAHM","file":"src.78399e21.css","sourceRoot":"../src","sourcesContent":["$color: steelblue;\n\n.cine-fan {\n  color: $color;\n}"]}
+{"version":3,"sources":["index.scss"],"names":[],"mappings":"AAEA;EACE,OAHM;;;AAMR;EACE;EACA","file":"src.78399e21.css","sourceRoot":"../src","sourcesContent":["$color: steelblue;\n\n.cine-fan {\n  color: $color;\n}\n\nimg {\n  width: auto;\n  height: 500px;\n}"]}

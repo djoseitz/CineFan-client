@@ -33,7 +33,12 @@ export class MovieView extends React.Component {
           <span className="label">Director: </span>
           <span className="value">{movie.Director.Name}</span>
         </div>
-      </div>
+        <div className="back-button">
+          <button onClick={() => this.setState({ selectedMovie: null })}>
+            Back to All Movies
+          </button>
+        </div>
+      </div >
 
 
     );
