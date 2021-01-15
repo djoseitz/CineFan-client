@@ -4,7 +4,12 @@ $color: steelblue;
   color: $color;
 }
 
-img {
+.movie-poster {
+  width: auto;
+  height: 500px;
+}
+
+.card-img {
   width: auto;
   height: 500px;
 }
