@@ -25,12 +25,12 @@ export function RegistrationView() {
     };
 
     axios
-      .post("https://groverohit-movie-api.herokuapp.com/users", createdUser)
+      .post("https://cinefandb.herokuapp.com/users", createdUser)
       .then((response) => {
         console.log(response);
         console.log(response.data);
         alert("User created successfully");
-        window.open("/client", "_self");
+        window.open("/", "_self");
       })
       .catch((e) => {
         console.log(e.response);
