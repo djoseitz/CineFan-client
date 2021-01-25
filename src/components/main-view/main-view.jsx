@@ -16,6 +16,7 @@ import { RegistrationView } from "../registration-view/registration-view";
 import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
 import { ProfileView } from "../profile-view/profile-view";
+import { ProfileUpdate } from "../profile-update/profile-update";
 
 export class MainView extends React.Component {
   constructor() {
@@ -201,6 +202,12 @@ export class MainView extends React.Component {
                   movies={movies}
                 />
               );
+            }}
+          />
+          <Route
+            path="/update/:userId"
+            render={() => {
+              return <ProfileUpdate />;
             }}
           />
         </div>

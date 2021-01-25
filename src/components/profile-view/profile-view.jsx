@@ -1,141 +1,188 @@
-import React from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import "./profile-view.scss";
 
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Card from 'react-bootstrap/Card';
+import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+
+import { Link } from "react-router-dom";
+
+import axios from "axios";
 
 export class ProfileView extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      username: null,
-      password: null,
-      email: null,
-      birthday: null,
+      username: "",
+      password: "",
+      email: "",
+      dob: "",
       favoriteMovies: [],
-      movies: [],
+      movies: "",
     };
   }
 
   componentDidMount() {
-    //authentication
-    const accessToken = localStorage.getItem('token');
+    let accessToken = localStorage.getItem("token");
     this.getUser(accessToken);
   }
 
-  getUser(token) {
-    const username = localStorage.getItem('user');
+  formatDate(date) {
+    if (date) date = date.substring(0, 10);
+    return date;
+  }
 
+  getUser(token) {
+    //console.log(localStorage.getItem("user"));
+    let url =
+      "https://cinefandb.herokuapp.com/users/" +
+      localStorage.getItem("user");
     axios
-      .get(`https://cinefandb.herokuapp.com/users/${username}`, {
+      .get(url, {
         headers: { Authorization: `Bearer ${token}` },
       })
-
-      .then((res) => {
-        this.setState({
-          Username: res.data.Username,
-          Password: res.data.Password,
-          Email: res.data.Email,
-          Birthday: res.data.Birthday,
-          FavoriteMovies: res.data.FavoriteMovies,
-        });
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
-  }
-
-  deleteFavoriteMovie(movieId) {
-    console.log(this.props.movies);
-    axios
-      .delete(
-        `https://cinefandb.herokuapp.com/users/${localStorage.getItem(
-          'user'
-        )}/Movies/${movieId}`,
-        {
-          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-        }
-      )
-      .then((res) => {
-        alert('Removed movie from favorites');
-      })
-      .catch((e) => {
-        alert('error removing movie' + e);
-      });
-  }
-
-  deleteUser(e) {
-    axios
-      .delete(
-        `https://cinefandb.herokuapp.com/users/${localStorage.getItem('user')}`,
-        {
-          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-        }
-      )
       .then((response) => {
-        alert('Account deleted');
-        localStorage.removeItem('token', 'user');
-        window.open('/');
+        //console.log(response);
+        this.setState({
+          username: response.data.Username,
+          password: response.data.Password,
+          email: response.data.Email,
+          dob: this.formatDate(response.data.Birthday),
+          favoriteMovies: response.data.FavoriteMovies,
+        });
+      });
+  }
+
+  removeFavorite(movie) {
+    let token = localStorage.getItem("token");
+    let url =
+      "https://cinefandb.herokuapp.com/users/" +
+      localStorage.getItem("user") +
+      "/Movies/" +
+      movie._id;
+    axios
+      .delete(url, {
+        headers: { Authorization: `Bearer ${token}` },
       })
-      .catch((event) => {
-        alert('failed to delete user');
+      .then((response) => {
+        console.log(response);
+        this.componentDidMount();
+      });
+  }
+
+    handleDelete() {
+        let token = localStorage.getItem("token");
+        let user = localStorage.getItem("user");
+    axios
+      .delete(
+        `https://cinefandb.herokuapp.com/users/${user}`, { headers: { Authorization: `Bearer ${token}` } }
+      )
+      .then(() => {
+        alert(user + " has been deleted");
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+        window.location.pathname = "/";
+      })
+      .catch(function (error) {
+        console.log(error);
       });
   }
 
   render() {
     const { movies } = this.props;
-    const favoriteMovieList = movies.filter((movie) =>
-      this.state.favoriteMovies.includes(movie._id)
-    );
+    this.getUser(localStorage.getItem("token"));
+    const favoriteMovieList = movies.filter((movie) => {
+      return this.state.favoriteMovies.includes(movie._id);
+    });
+    // console.log(favoriteMovieList);
+
+    if (!movies) alert("Please sign in");
     return (
-      <div>
+      <div className="userProfile" style={{ display: "flex" }}>
         <Container>
-          <br />
-          <br />
-          <h1>My Profile</h1>
-          <br />
-          <Card>
-            <Card.Body>
-              <Card.Text>Username: {this.state.Username}</Card.Text>
-              <Card.Text>Password: xxxxxx</Card.Text>
-              <Card.Text>Email: {this.state.Email}</Card.Text>
-              <Card.Text>Birthday {this.state.Birthday}</Card.Text>
-              Favorite Movies:
-              {favoriteMovieList.map((movie) => (
-                <div key={movie._id} className='fav-movies-button'>
-                  <Link to={`/movies/${movie._id}`}>
-                    <Button variant='link'>{movie.Title}</Button>
+          <Row>
+            <Col>
+              <Form style={{ width: "24rem", float: "left" }}>
+                <h1 style={{ textAlign: "center" }}>Profile Details</h1>
+                <Form.Group controlId="formBasicUsername">
+                  <h3>Username: </h3>
+                  <Form.Label>{this.state.username}</Form.Label>
+                </Form.Group>
+                <Form.Group controlId="formBasicEmail">
+                  <h3>Email:</h3>
+                  <Form.Label>{this.state.email}</Form.Label>
+                </Form.Group>
+                <Form.Group controlId="formBasicDate">
+                  <h3>Date of Birth:</h3>
+                  <Form.Label>{this.state.dob}</Form.Label>
+                </Form.Group>
+                  <Link to={`/update/${this.state.username}`}>
+                    <Button variant="outline-dark" 
+                            type="link"
+                            size="sm" 
+                            block
+                    >
+                      Edit Profile
+                    </Button>
                   </Link>
-                  <Button
-                    variant='dark'
-                    onClick={(e) => this.deleteFavoriteMovie(movie._id)}
+                <Link to={`/`}>
+                  <Button variant="outline-dark" 
+                          type="submit"
+                          size="sm"
+                          block
                   >
-                    Remove Favorite
+                    Back to Main
                   </Button>
-                </div>
-              ))}
-              <br />
-              <br />
-              <Link to={'/user/update'}>
-                <Button variant='dark'>Update Profile</Button>
-                <br />
-                <br />
-              </Link>
-              <Button variant='dark' onClick={() => this.deleteUser()}>
-                Delete User
-              </Button>
-              <br />
-              <br />
-              <Link to={`/`}>
-                <Button variant='dark'>Back</Button>
-              </Link>
-            </Card.Body>
-          </Card>
+                </Link>
+                <Button variant="outline-danger" 
+                        size="sm"
+                        block
+                        onClick={() => this.handleDelete()}
+                >
+                  Delete Account
+                </Button>
+                
+              </Form>
+            </Col>
+            <Col>
+              <div
+                className="favoriteMovies"
+                style={{
+                  float: "right",
+                  textAlign: "center",
+                  width: "24rem",
+                }}
+              >
+                <h1>Favorite Movies</h1>
+                {favoriteMovieList.map((movie) => {
+                  return (
+                    <div key={movie._id}>
+                      <Card>
+                        <Card.Body>
+                          <Link to={`/movies/${movie._id}`}>
+                            <Card.Title>{movie.Title}</Card.Title>
+                          </Link>
+                        </Card.Body>
+                      </Card>
+                      <Button onClick={() => this.removeFavorite(movie)}>
+                        Remove
+                      </Button>
+                    </div>
+                  );
+                })}
+              </div>
+            </Col>
+          </Row>
         </Container>
       </div>
     );
   }
 }
+
+ProfileView.propTypes = {
+  movies: PropTypes.array.isRequired,
+};
