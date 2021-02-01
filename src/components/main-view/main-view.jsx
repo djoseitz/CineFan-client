@@ -4,9 +4,12 @@ import { Link } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
+// #0
+import { setMovies } from '../../actions/actions';
 import "./main-view.scss";
 
 import { LoginView } from "../login-view/login-view";
@@ -17,8 +20,10 @@ import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { ProfileUpdate } from "../profile-update/profile-update";
+import MoviesList from "../movies-list/movies-list";
+import VisibilityFilterInput from "../visibility-filter-input/visibility-filter-input";
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
   constructor() {
     super();
 
@@ -46,9 +51,11 @@ export class MainView extends React.Component {
       })
       .then((response) => {
         // Assign the result to the state
-        this.setState({
-          movies: response.data,
-        });
+        // this.setState({
+        //   movies: response.data,
+        // });
+        // #1
+        this.props.setMovies(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -86,7 +93,9 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, selectedMovie, user } = this.state;
+    // #2
+    let { movies, visibilityFilter } = this.props;
+    const { user } = this.state;
 
     // if (!user)
     //   return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
@@ -112,6 +121,7 @@ export class MainView extends React.Component {
               className="justify-content-end"
               id="basic-navbar-nav"
             >
+              <VisibilityFilterInput visibilityFilter={visibilityFilter} />
               {!user ? (
                 <ul>
                   <Link to={`/`}>
@@ -159,7 +169,7 @@ export class MainView extends React.Component {
                 return (
                   <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
                 );
-              return movies.map((m) => <MovieCard key={m._id} movie={m} />);
+              return <MoviesList movies={movies} />;
             }}
           />
           <Route path="/register" render={() => <RegistrationView />} />
@@ -215,3 +225,11 @@ export class MainView extends React.Component {
     );
   }
 }
+
+// #3
+let mapStateToProps = state => {
+  return { movies: state.movies }
+}
+
+// #4
+export default connect(mapStateToProps, { setMovies } )(MainView);
