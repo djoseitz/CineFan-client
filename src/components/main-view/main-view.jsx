@@ -46,7 +46,7 @@ class MainView extends React.Component {
 
   getMovies(token) {
     axios
-      .get("https://cinefandb.herokuapp.com/movies", {
+      .get("https://cinefan.netlify.app/movies", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {

@@ -21,7 +21,7 @@ export function ProfileUpdate(props) {
     const isValid = formValidation();
 
     const url =
-      "https://cinefandb.herokuapp.com/users/" +
+      "https://cinefan.netlify.app/users/" +
       localStorage.getItem("user");
 
     if (isValid) {

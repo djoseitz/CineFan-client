@@ -39,7 +39,7 @@ export class ProfileView extends React.Component {
   getUser(token) {
     //console.log(localStorage.getItem("user"));
     let url =
-      "https://cinefandb.herokuapp.com/users/" +
+      "https://cinefan.netlify.app/users/" +
       localStorage.getItem("user");
     axios
       .get(url, {
@@ -60,7 +60,7 @@ export class ProfileView extends React.Component {
   removeFavorite(movie) {
     let token = localStorage.getItem("token");
     let url =
-      "https://cinefandb.herokuapp.com/users/" +
+      "https://cinefan.netlify.app/users/" +
       localStorage.getItem("user") +
       "/Movies/" +
       movie._id;
@@ -79,7 +79,7 @@ export class ProfileView extends React.Component {
         let user = localStorage.getItem("user");
     axios
       .delete(
-        `https://cinefandb.herokuapp.com/users/${user}`, { headers: { Authorization: `Bearer ${token}` } }
+        `https://cinefan.netlify.app/users/${user}`, { headers: { Authorization: `Bearer ${token}` } }
       )
       .then(() => {
         alert(user + " has been deleted");

@@ -25,7 +25,7 @@ export function RegistrationView() {
     };
 
     axios
-      .post("https://cinefandb.herokuapp.com/users", createdUser)
+      .post("https://cinefan.netlify.app/users", createdUser)
       .then((response) => {
         console.log(response);
         console.log(response.data);
