@@ -13,7 +13,7 @@ export class MovieView extends React.Component {
   addFavorite(movie) {
     let token = localStorage.getItem("token");
     let url =
-      "https://cinefan.netlify.app/users/" +
+      "https://cinefandb.herokuapp.com/users/" +
       localStorage.getItem("user") +
       "/Movies/" +
       movie._id;
