@@ -54496,7 +54496,7 @@ function VisibilityFilterInput(props) {
       return props.setFilter(e.target.value);
     },
     value: props.visibilityFilter,
-    placeholder: "filter"
+    placeholder: "Search"
   });
 }
 
@@ -54963,7 +54963,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54419" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52084" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
