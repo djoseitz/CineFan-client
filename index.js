@@ -354,7 +354,7 @@ app.use(cors());
 // local connection
 //mongoose.connect("mongodb://localhost:27017/myflixdb", {useNewUrlParser: true});
 mongoose.connect(
-  "mongodb+srv://testuser1:testuser1@web-seitz.znmwo.mongodb.net/CineFanDB?retryWrites=true&w=majority",
+  "mongodb+srv://testuser1:testuser@web-seitz.znmwo.mongodb.net/CineFanDB?retryWrites=true&w=majority",
   { useNewUrlParser: true }
 );
 
