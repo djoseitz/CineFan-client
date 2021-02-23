@@ -1,6 +1,10 @@
 .navbar-dark .navbar-brand {
   color: #007bff;
 }
+
+.navbar {
+  background-color: #4e4e45;
+}
 .cine-fan {
   color: steelblue;
 }

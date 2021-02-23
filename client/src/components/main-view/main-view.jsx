@@ -8,6 +8,11 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 import "./main-view.scss";
+import { Form, FormControl } from "react-bootstrap";
+
+import { connect } from "react-redux";
+
+import { setMovies } from "../../actions/actions";
 
 import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
@@ -17,8 +22,10 @@ import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { ProfileUpdate } from "../profile-update/profile-update";
+import MoviesList from "../movies-list/movies-list";
+import VisibilityFilterInput from "../visibility-filter-input/visibility-filter-input";
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
   constructor() {
     super();
 
@@ -46,9 +53,7 @@ export class MainView extends React.Component {
       })
       .then((response) => {
         // Assign the result to the state
-        this.setState({
-          movies: response.data,
-        });
+        this.props.setMovies(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -86,7 +91,8 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, selectedMovie, user } = this.state;
+    let { movies, visibilityFilter } = this.props;
+    let { user } = this.state;
 
     // if (!user)
     //   return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
@@ -105,13 +111,19 @@ export class MainView extends React.Component {
             className="navbar shadow-sm mb-5"
           >
             <Navbar.Brand href="http://localhost:1234" className="navbar-brand">
-              CineFan
+              FlixNET
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse
               className="justify-content-end"
               id="basic-navbar-nav"
             >
+              <Form inline>
+                <VisibilityFilterInput
+                  className="mr-sm-2"
+                  visibilityFilter={visibilityFilter}
+                />
+              </Form>
               {!user ? (
                 <ul>
                   <Link to={`/`}>
@@ -133,7 +145,7 @@ export class MainView extends React.Component {
                       className="navbar-link"
                       onClick={() => this.logOut()}
                     >
-                      {user} - Sign Out
+                      Sign Out
                     </Button>
                   </Link>
                   <Link to={`/users/${user}`}>
@@ -144,6 +156,11 @@ export class MainView extends React.Component {
                   <Link to={`/`}>
                     <Button variant="link" className="navbar-link">
                       Movies
+                    </Button>
+                  </Link>
+                  <Link to={`/about`}>
+                    <Button variant="link" className="navbar-link">
+                      About
                     </Button>
                   </Link>
                 </ul>
@@ -159,7 +176,7 @@ export class MainView extends React.Component {
                 return (
                   <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
                 );
-              return movies.map((m) => <MovieCard key={m._id} movie={m} />);
+              return <MoviesList movies={movies} />;
             }}
           />
           <Route path="/register" render={() => <RegistrationView />} />
@@ -215,3 +232,9 @@ export class MainView extends React.Component {
     );
   }
 }
+
+let mapStateToProps = (state) => {
+  return { movies: state.movies };
+};
+
+export default connect(mapStateToProps, { setMovies })(MainView);
