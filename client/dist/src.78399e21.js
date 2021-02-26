@@ -53539,12 +53539,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.MovieView = MovieView;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","axios":"../node_modules/axios/index.js"}],"components/registration-view/registration-view.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../.nvm/versions/node/v14.15.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/registration-view/registration-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","axios":"../node_modules/axios/index.js"}],"components/registration-view/registration-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -53554,17 +53549,15 @@ exports.RegistrationView = RegistrationView;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _axios = _interopRequireDefault(require("axios"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
 var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
 
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
-require("./registration-view.scss");
+var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
 
 var _reactRouterDom = require("react-router-dom");
+
+var _axios = _interopRequireDefault(require("axios"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53587,98 +53580,263 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function RegistrationView() {
   var _useState = (0, _react.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
-      username = _useState2[0],
+      Username = _useState2[0],
       setUsername = _useState2[1];
 
   var _useState3 = (0, _react.useState)(""),
       _useState4 = _slicedToArray(_useState3, 2),
-      password = _useState4[0],
+      Password = _useState4[0],
       setPassword = _useState4[1];
 
   var _useState5 = (0, _react.useState)(""),
       _useState6 = _slicedToArray(_useState5, 2),
-      email = _useState6[0],
+      Email = _useState6[0],
       setEmail = _useState6[1];
 
   var _useState7 = (0, _react.useState)(""),
       _useState8 = _slicedToArray(_useState7, 2),
-      dob = _useState8[0],
-      setDob = _useState8[1];
+      Birthday = _useState8[0],
+      setBirthday = _useState8[1];
+
+  var _useState9 = (0, _react.useState)({}),
+      _useState10 = _slicedToArray(_useState9, 2),
+      usernameErr = _useState10[0],
+      setUsernameErr = _useState10[1];
+
+  var _useState11 = (0, _react.useState)({}),
+      _useState12 = _slicedToArray(_useState11, 2),
+      passwordErr = _useState12[0],
+      setPasswordErr = _useState12[1];
+
+  var _useState13 = (0, _react.useState)({}),
+      _useState14 = _slicedToArray(_useState13, 2),
+      emailErr = _useState14[0],
+      setEmailErr = _useState14[1];
+
+  var user = {
+    Username: Username,
+    Password: Password,
+    Email: Email,
+    Birthday: Birthday
+  };
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     var createdUser = {
-      Username: username,
-      Password: password,
-      Email: email,
-      Birthday: dob
+      Username: Username,
+      Password: Password,
+      Email: Email,
+      Birthday: Birthday
     };
+    var isValid = formValidation();
+    var url = "https://cinefandb.herokuapp.com/users/";
 
-    _axios.default.post("https://cinefandb.herokuapp.com/users", createdUser).then(function (response) {
-      console.log(response);
-      console.log(response.data);
-      alert("User created successfully");
-      window.open("/", "_self");
+    if (isValid) {
+      _axios.default.post(url, createdUser).then(function (response) {
+        // const data = response.data;
+        // console.log(data);
+        // localStorage.setItem("user", data.Username);
+        // props.setUsername(data.Username);
+        // alert("Your account was created successfully");
+        console.log(response.data);
+        login(response.data);
+      }).catch(function (e) {
+        console.log(e.response); // alert("");
+      });
+    }
+  };
+
+  var login = function login(data) {
+    _axios.default.post('https://cinefandb.herokuapp.com/login', {
+      Username: data.Username,
+      Password: user.Password
+    }).then(function (res) {
+      var data = res.data;
+      props.onLoggedIn(data);
+      window.open('/client', '_self');
     }).catch(function (e) {
-      console.log(e.response);
-      alert("Error processing request");
+      console.log('No such user', e);
     });
   };
 
-  return _react.default.createElement(_Form.default, {
-    style: {
-      width: "32rem",
-      margin: "auto",
-      textAlign: "center"
+  var formValidation = function formValidation() {
+    var usernameErr = {};
+    var passwordErr = {};
+    var emailErr = {};
+    var isValid = true;
+
+    if (Username.trim().length < 5) {
+      usernameErr.usernameShort = "Username must be at least 5 characters";
+      isValid = false;
     }
+
+    if (Password.trim().length < 1) {
+      passwordErr.passwordMissing = "You must enter a password";
+      isValid = false;
+    }
+
+    if (!Email.includes(".") && !email.includes("@")) {
+      emailErr.emailNotEmail = "A valid email address is required";
+      isValid = false;
+    }
+
+    setUsernameErr(usernameErr);
+    setPasswordErr(passwordErr);
+    setEmailErr(emailErr);
+    return isValid;
+  };
+
+  return _react.default.createElement(_Container.default, null, _react.default.createElement("h1", null, "Register a new account"), _react.default.createElement(_Form.default, {
+    className: "registration-form"
   }, _react.default.createElement(_Form.default.Group, {
     controlId: "formBasicUsername"
-  }, _react.default.createElement(_Form.default.Label, null, "Username"), _react.default.createElement(_Form.default.Control, {
+  }, _react.default.createElement(_Form.default.Label, null, "Username:"), _react.default.createElement(_Form.default.Control, {
     type: "text",
+    value: Username,
     placeholder: "Enter username",
-    value: username,
+    required: true,
     onChange: function onChange(e) {
       return setUsername(e.target.value);
     }
+  }), Object.keys(usernameErr).map(function (key) {
+    return _react.default.createElement("div", {
+      key: key,
+      style: {
+        color: "red"
+      }
+    }, usernameErr[key]);
   })), _react.default.createElement(_Form.default.Group, {
     controlId: "formBasicPassword"
-  }, _react.default.createElement(_Form.default.Label, null, "Password"), _react.default.createElement(_Form.default.Control, {
+  }, _react.default.createElement(_Form.default.Label, null, "Password:"), _react.default.createElement(_Form.default.Control, {
     type: "password",
-    placeholder: "Password",
-    value: password,
+    value: Password,
+    placeholder: "Enter password",
+    required: true,
     onChange: function onChange(e) {
       return setPassword(e.target.value);
     }
+  }), Object.keys(passwordErr).map(function (key) {
+    return _react.default.createElement("div", {
+      key: key,
+      style: {
+        color: "red"
+      }
+    }, passwordErr[key]);
+  })), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, null, "Birth Date:"), _react.default.createElement(_Form.default.Control, {
+    type: "date",
+    value: Birthday,
+    placeholder: "Select Birthday",
+    required: true,
+    onChange: function onChange(e) {
+      return setBirthday(e.target.value);
+    }
   })), _react.default.createElement(_Form.default.Group, {
     controlId: "formBasicEmail"
-  }, _react.default.createElement(_Form.default.Label, null, "Email address"), _react.default.createElement(_Form.default.Control, {
+  }, _react.default.createElement(_Form.default.Label, null, "Email:"), _react.default.createElement(_Form.default.Control, {
     type: "email",
-    value: email,
-    placeholder: "Enter email",
+    value: Email,
+    placeholder: "name@example.com",
+    required: true,
     onChange: function onChange(e) {
       return setEmail(e.target.value);
     }
-  })), _react.default.createElement(_Form.default.Group, {
-    controlId: "formBasicDate"
-  }, _react.default.createElement(_Form.default.Label, null, "Date of Birth"), _react.default.createElement(_Form.default.Control, {
-    type: "date",
-    value: dob,
-    placeholder: "12/31/1986",
-    onChange: function onChange(e) {
-      return setDob(e.target.value);
-    }
-  })), _react.default.createElement(_Button.default, {
-    variant: "primary",
+  }), Object.keys(emailErr).map(function (key) {
+    return _react.default.createElement("div", {
+      key: key,
+      style: {
+        color: "red"
+      }
+    }, emailErr[key]);
+  })), _react.default.createElement(_reactRouterDom.Link, {
+    to: "/users/"
+  }, _react.default.createElement(_Button.default, {
+    variant: "btn-lg btn-dark btn-block",
     type: "submit",
     onClick: handleSubmit
-  }, "Submit"), _react.default.createElement(_reactRouterDom.Link, {
-    to: "/"
-  }, _react.default.createElement(_Button.default, {
-    variant: "link",
-    type: "submit"
-  }, "Cancel")));
-}
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./registration-view.scss":"components/registration-view/registration-view.scss","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/director-view/director-view.scss":[function(require,module,exports) {
+  }, "Register"))));
+} // import React, { useState } from "react";
+// import axios from "axios";
+// import PropTypes from "prop-types";
+// import Form from "react-bootstrap/Form";
+// import Button from "react-bootstrap/Button";
+// import "./registration-view.scss";
+// import { Link } from "react-router-dom";
+// export function RegistrationView() {
+//   const [username, setUsername] = useState("");
+//   const [password, setPassword] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [dob, setDob] = useState("");
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     const createdUser = {
+//       Username: username,
+//       Password: password,
+//       Email: email,
+//       Birthday: dob,
+//     };
+//     axios
+//       .post("https://cinefandb.herokuapp.com/users", createdUser)
+//       .then((response) => {
+//         console.log(response);
+//         console.log(response.data);
+//         alert("User created successfully");
+//         window.open("/", "_self");
+//       })
+//       .catch((e) => {
+//         console.log(e.response);
+//         alert("Error processing request");
+//       });
+//   };
+//   return (
+//     <Form style={{ width: "32rem", margin: "auto", textAlign: "center" }}>
+//       <Form.Group controlId="formBasicUsername">
+//         <Form.Label>Username</Form.Label>
+//         <Form.Control
+//           type="text"
+//           placeholder="Enter username"
+//           value={username}
+//           onChange={(e) => setUsername(e.target.value)}
+//         />
+//       </Form.Group>
+//       <Form.Group controlId="formBasicPassword">
+//         <Form.Label>Password</Form.Label>
+//         <Form.Control
+//           type="password"
+//           placeholder="Password"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//         />
+//       </Form.Group>
+//       <Form.Group controlId="formBasicEmail">
+//         <Form.Label>Email address</Form.Label>
+//         <Form.Control
+//           type="email"
+//           value={email}
+//           placeholder="Enter email"
+//           onChange={(e) => setEmail(e.target.value)}
+//         />
+//       </Form.Group>
+//       <Form.Group controlId="formBasicDate">
+//         <Form.Label>Date of Birth</Form.Label>
+//         <Form.Control
+//           type="date"
+//           value={dob}
+//           placeholder="12/31/1986"
+//           onChange={(e) => setDob(e.target.value)}
+//         />
+//       </Form.Group>
+//       <Button variant="primary" type="submit" onClick={handleSubmit}>
+//         Submit
+//       </Button>
+//       <Link to={`/`}>
+//         <Button variant="link" type="submit">
+//           Cancel
+//         </Button>
+//       </Link>
+//     </Form>
+//   );
+// }
+},{"react":"../node_modules/react/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","axios":"../node_modules/axios/index.js"}],"components/director-view/director-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -54663,7 +54821,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       });
       console.log("logout successful");
       alert("You have been successfully logged out");
-      window.open("/", "_self");
+      window.open("/client", "_self");
     }
   }, {
     key: "render",
@@ -54747,7 +54905,11 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }), _react.default.createElement(_reactRouterDom.Route, {
         path: "/register",
         render: function render() {
-          return _react.default.createElement(_registrationView.RegistrationView, null);
+          return _react.default.createElement(_registrationView.RegistrationView, {
+            onLoggedIn: function onLoggedIn(user) {
+              return _this3.onLoggedIn(user);
+            }
+          });
         }
       }), _react.default.createElement(_reactRouterDom.Route, {
         path: "/users/",
@@ -54967,7 +55129,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61962" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52277" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

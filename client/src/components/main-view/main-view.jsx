@@ -87,7 +87,7 @@ class MainView extends React.Component {
     });
     console.log("logout successful");
     alert("You have been successfully logged out");
-    window.open("/", "_self");
+    window.open("/client", "_self");
   }
 
   render() {
@@ -179,7 +179,7 @@ class MainView extends React.Component {
               return <MoviesList movies={movies} />;
             }}
           />
-          <Route path="/register" render={() => <RegistrationView />} />
+          <Route path="/register" render={() => <RegistrationView onLoggedIn={(user) => this.onLoggedIn(user)}/>} />
 
           <Route
             path="/users/"
