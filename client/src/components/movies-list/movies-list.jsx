@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
+import "./movies-list.scss";
 
 import { MovieCard } from '../movie-card/movie-card';
 

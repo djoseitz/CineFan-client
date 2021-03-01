@@ -1,7 +1,28 @@
 .navbar-dark .navbar-brand {
-  color: #007bff;
+  color: #000;
+  padding: 0;
 }
 
 .navbar {
-  background-color: #4e4e45;
+  background-color: #57ab42;
+}
+
+.navbar-link {
+  color: white;
+}
+
+.btn {
+  background-color: #57ab42;
+  margin-top: 20px;
+}
+
+.btn-link {
+  color: white;
+}
+
+ul {
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 50px;
+  line-height: 50px;
 }

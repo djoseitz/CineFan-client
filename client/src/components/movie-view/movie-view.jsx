@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import "./movie-view.scss";
 
 export class MovieView extends React.Component {
   constructor() {
