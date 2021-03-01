@@ -140,12 +140,13 @@ class MainView extends React.Component {
               ) : (
                 <ul>
                   <Link to={`/`}>
-                    <Button
-                      variant="link"
-                      className="navbar-link"
-                      onClick={() => this.logOut()}
-                    >
-                      Sign Out
+                    <Button variant="link" className="navbar-link">
+                      Movies
+                    </Button>
+                  </Link>
+                  <Link to={`/about`}>
+                    <Button variant="link" className="navbar-link">
+                      About
                     </Button>
                   </Link>
                   <Link to={`/users/${user}`}>
@@ -154,13 +155,12 @@ class MainView extends React.Component {
                     </Button>
                   </Link>
                   <Link to={`/`}>
-                    <Button variant="link" className="navbar-link">
-                      Movies
-                    </Button>
-                  </Link>
-                  <Link to={`/about`}>
-                    <Button variant="link" className="navbar-link">
-                      About
+                    <Button
+                      variant="link"
+                      className="navbar-link"
+                      onClick={() => this.logOut()}
+                    >
+                      Sign Out
                     </Button>
                   </Link>
                 </ul>

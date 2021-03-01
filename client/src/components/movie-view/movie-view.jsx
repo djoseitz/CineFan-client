@@ -40,43 +40,44 @@ export class MovieView extends React.Component {
 
     return (
       <div className="movie-view">
-        <img className="movie-poster" src={movie.ImagePath} />
-        <div className="movie-title">
+        <div>
+          <Button
+            variant="primary"
+            size="sm"
+            onClick={() => this.addFavorite(movie)}
+          >
+            Add to Favorites
+          </Button>
+        </div>
+        <div class="movieView-posterWrap col-auto">
+          <img className="movie-poster" src={movie.ImagePath} />
+        </div>
+        <div className="movieView-title">
           <span className="label">Title: </span>
           <span className="value">{movie.Title}</span>
         </div>
-        <div className="movie-description">
+        <div className="movieView-description">
           <span className="label">Description: </span>
           <span className="value">{movie.Description}</span>
         </div>
 
-        <div className="movie-genre">
-          <span className="label">Genre: </span>
-          <span className="value">{movie.Genre.Name}</span>
-        </div>
-        <div className="movie-director">
+
+        <div className="movieView-director">
           <span className="label">Director: </span>
-          <span className="value">{movie.Director.Name}</span>
+          <Link to={`/directors/${movie.Director.Name}`}>
+            <Button variant="link">{movie.Director.Name}</Button>
+          </Link>
+          </div>
+          <div className="movieView-genre">
+            <span className="label">Genre: </span>
+            <Link to={`/genres/${movie.Genre.Name}`}>
+            <Button variant="link">{movie.Genre.Name}</Button>
+          </Link>
+          </div>
+          <Link to={`/`}>
+            <Button variant="link">Return</Button>
+          </Link>
         </div>
-        <Link to={`/directors/${movie.Director.Name}`}>
-          <Button variant="link">Director</Button>
-        </Link>
-        <Link to={`/genres/${movie.Genre.Name}`}>
-          <Button variant="link">Genre</Button>
-        </Link>
-        <div>
-              <Button
-                variant="primary"
-                size="sm"
-                onClick={() => this.addFavorite(movie)}
-              >
-                Add to Favorites
-              </Button>
-            </div>
-        <Link to={`/`}>
-          <Button variant="link">Return</Button>
-        </Link>
-      </div>
     );
   }
 }

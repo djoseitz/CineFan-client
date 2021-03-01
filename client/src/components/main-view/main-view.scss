@@ -1,19 +1,15 @@
 .navbar-dark .navbar-brand {
-  color: #000;
+  color: white;
   padding: 0;
 }
 
 .navbar {
-  background-color: #57ab42;
-}
-
-.navbar-link {
-  color: white;
+  background-color: #af34bd;
 }
 
 .btn {
-  background-color: #57ab42;
-  margin-top: 20px;
+  background-color: #af34bd;
+  margin-top: 13px;
 }
 
 .btn-link {
@@ -25,4 +21,16 @@ ul {
   padding-bottom: 0;
   height: 50px;
   line-height: 50px;
+}
+
+body {
+  background-color: #1d1d1d;
+}
+
+a {
+  color: white;
+}
+
+a :hover {
+  color: #ede13f !important;
 }
