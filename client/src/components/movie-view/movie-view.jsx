@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import "./movie-view.scss";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 export class MovieView extends React.Component {
   constructor() {
@@ -40,44 +42,52 @@ export class MovieView extends React.Component {
 
     return (
       <div className="movie-view">
-        <div>
-          <Button
-            variant="primary"
-            size="sm"
-            onClick={() => this.addFavorite(movie)}
-          >
-            Add to Favorites
-          </Button>
-        </div>
-        <div class="movieView-posterWrap col-auto">
-          <img className="movie-poster" src={movie.ImagePath} />
-        </div>
-        <div className="movieView-title">
-          <span className="label">Title: </span>
-          <span className="value">{movie.Title}</span>
-        </div>
-        <div className="movieView-description">
-          <span className="label">Description: </span>
-          <span className="value">{movie.Description}</span>
-        </div>
-
-
-        <div className="movieView-director">
-          <span className="label">Director: </span>
-          <Link to={`/directors/${movie.Director.Name}`}>
-            <Button variant="link">{movie.Director.Name}</Button>
-          </Link>
-          </div>
-          <div className="movieView-genre">
-            <span className="label">Genre: </span>
-            <Link to={`/genres/${movie.Genre.Name}`}>
-            <Button variant="link">{movie.Genre.Name}</Button>
-          </Link>
-          </div>
+        <div className="nav-buttons">
           <Link to={`/`}>
             <Button variant="link">Return</Button>
           </Link>
+          <span className="addToFavorites">
+            <Button
+              variant="link"
+              // size="sm"
+              onClick={() => this.addFavorite(movie)}
+            >
+              Add to Favorites
+            </Button>
+          </span>
         </div>
+        <div className="movieView-posterWrap col-auto">
+          <img className="movie-poster" src={movie.ImagePath} />
+        </div>
+        <div className="movieView-title">
+          <span className="value">{movie.Title}</span>
+        </div>
+        <Row>
+            <Col>
+              <div className='movieView-description'>
+                <span className='value'>{movie.Description}</span>
+              </div>
+            </Col>
+          </Row>
+
+
+
+        <div className="movieView-links">
+          <Link to={`/directors/${movie.Director.Name}`}>
+            <Button variant="link">Director: {movie.Director.Name}</Button>
+          </Link>
+          {/* <Button
+            variant="primary"
+            size="sm"
+            href={`/directors/${movie.Director.Name}`}
+          >
+            Director: {movie.Director.Name}
+          </Button> */}
+          <Link to={`/genres/${movie.Genre.Name}`}>
+            <Button variant="link">Genre: {movie.Genre.Name}</Button>
+          </Link>
+          </div>
+      </div>
     );
   }
 }
