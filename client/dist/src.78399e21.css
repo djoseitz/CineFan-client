@@ -1,5 +1,7 @@
 .navbar-dark .navbar-brand {
-  color: white;
+  color: #ede13f;
+  font-weight: 800;
+  font-size: 30px;
   padding: 0;
 }
 
@@ -116,6 +118,12 @@ a :hover {
 
 .btn-link :hover {
   background-color: white !important;
+}
+.container-fluid {
+  color: white;
+}
+.userProfile {
+  color: white;
 }
 .row {
   display: -ms-flexbox;

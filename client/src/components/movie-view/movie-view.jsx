@@ -42,9 +42,15 @@ export class MovieView extends React.Component {
 
     return (
       <div className="movie-view">
+        <div className='backDropWrap'>
+          <img src={movie.BackdropPath} className='backDrop' />
+        </div>
         <div className="nav-buttons">
           <Link to={`/`}>
-            <Button variant="link">Return</Button>
+            <Button variant="outline-dark" 
+                            type="link"
+                            size="md" 
+                            >Return</Button>
           </Link>
           <span className="addToFavorites">
             <Button

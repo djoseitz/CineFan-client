@@ -53503,11 +53503,18 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       return _react.default.createElement("div", {
         className: "movie-view"
       }, _react.default.createElement("div", {
+        className: "backDropWrap"
+      }, _react.default.createElement("img", {
+        src: movie.BackdropPath,
+        className: "backDrop"
+      })), _react.default.createElement("div", {
         className: "nav-buttons"
       }, _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
-        variant: "link"
+        variant: "outline-dark",
+        type: "link",
+        size: "md"
       }, "Return")), _react.default.createElement("span", {
         className: "addToFavorites"
       }, _react.default.createElement(_Button.default, {
@@ -55144,7 +55151,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53988" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52898" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
