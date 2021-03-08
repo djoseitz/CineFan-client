@@ -41,25 +41,6 @@ a :hover {
 .navbar-dark a :hover {
   color: #ede13f !important;
 }
-
-.main-card {
-  margin-bottom: 50px;
-  transition: 0.5s;
-}
-.main-card:hover {
-  opacity: 0.5;
-  transition: 0.7s;
-}
-
-.movieCard-cardBody :hover {
-  text-decoration: none;
-}
-.card {
-  box-shadow: 4px 4px 5px 0px black;
-  border: none;
-  height: 100%;
-}
-
 .card-body {
   text-align: center;
   padding: 8px;
@@ -72,7 +53,7 @@ a :hover {
   color: white;
 }
 
-.movieCard-img {
+.card-img {
   padding: 5px;
 }
 
@@ -133,6 +114,7 @@ a :hover {
 .movieView-description {
   display: flex !important;
   justify-content: center !important;
+  margin-bottom: -35px;
 }
 
 .movieView-description > * {
@@ -161,14 +143,13 @@ a :hover {
   float: right;
 }
 
-.addToFavorites :hover {
+.nav-Btn :hover {
   color: #ede13f !important;
 }
 
 .movieView-links {
   display: flex;
   justify-content: center;
-  margin-top: -30px;
   margin-bottom: 50px;
 }
 
@@ -178,21 +159,30 @@ a :hover {
 }
 
 .btn-link :hover {
-  background-color: white !important;
+  background-color: #ede13f !important;
 }
-
-.backBtn :hover {
-  color: #ede13f !important;
+.form-label {
+  color: white;
 }
 .container-fluid {
   color: white;
 }
 
-.director-poster {
+.director-view {
+  margin-top: 30px;
+}
+
+.director-headshot {
+  float: left;
   height: 300px;
   width: auto;
   box-shadow: 4px 4px 5px 0px black;
   margin-bottom: 20px;
+  margin-right: 30px;
+}
+
+.label {
+  color: #ede13f;
 }
 
 a :hover {
@@ -213,15 +203,52 @@ a :hover {
 .backBtn :hover {
   color: #ede13f !important;
 }
-
-.mb-3 :hover {
-  text-decoration: none !important;
-  color: white;
-  opacity: 0.5 !important;
-  transition: 0.7s !important;
-}
 .userProfile {
   color: white;
+}
+
+.favesTitle {
+  margin-top: 40px;
+  margin-bottom: -20px;
+}
+
+.favesList {
+  margin-top: 30px;
+}
+
+.profile-movieCard {
+  margin-bottom: 50px;
+  transition: 0.5s;
+}
+.profile-movieCard:hover {
+  opacity: 0.5;
+  transition: 0.7s;
+}
+
+.nav-Btn :hover {
+  text-decoration: none !important;
+}
+
+.profile-deleteBtn {
+  background-color: #c92332;
+}
+.profile-deleteBtn:hover {
+  background-color: #1e1e1e;
+}
+
+.profile-deleteFave {
+  margin-bottom: 10px;
+}
+.loading {
+  color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loading-title {
+  font-size: 40px;
 }
 .row {
   display: -ms-flexbox;
@@ -230,12 +257,7 @@ a :hover {
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: 50px !important;
-}
-
-.card {
   margin-bottom: 20px !important;
-  background-color: #121212;
-  color: white;
 }
 .cine-fan {
   color: steelblue;
@@ -246,17 +268,23 @@ a :hover {
   height: 500px;
 }
 
-.card-img {
-  width: auto;
-  height: 500px;
-}
-
-.backBtn :hover {
-  color: #ede13f;
-}
-
 .main-card :hover {
   text-decoration: none;
+}
+
+.card {
+  text-decoration: none !important;
+  box-shadow: 4px 4px 5px 0px black !important;
+  margin-bottom: 20px !important;
+  background-color: #1e1e1e;
+  color: white;
+  height: auto;
+  background-color: #181818;
+  transition: 0.5s;
+}
+.card:hover {
+  opacity: 0.5;
+  transition: 0.7s;
 }
 
 /*# sourceMappingURL=/src.78399e21.css.map */

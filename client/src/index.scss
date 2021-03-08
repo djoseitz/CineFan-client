@@ -9,15 +9,21 @@ $color: steelblue;
   height: 500px;
 }
 
-.card-img {
-  width: auto;
-  height: 500px;
-}
-
-.backBtn :hover {
-  color: #ede13f;
-}
-
 .main-card :hover {
   text-decoration: none;
+}
+
+.card {
+  text-decoration: none !important;
+  box-shadow: 4px 4px 5px 0px black !important;
+  margin-bottom: 20px !important;
+  background-color: #1e1e1e;
+  color: white;
+  height: auto;
+  background-color: #181818;
+  transition: 0.5s;
+  &:hover {
+    opacity: 0.5;
+    transition: 0.7s;
+  }
 }

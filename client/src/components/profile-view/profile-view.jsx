@@ -4,6 +4,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "./profile-view.scss";
+import { MovieCard } from "../movie-card/movie-card";
+import { LoadingView } from "../loading-view/loading-view";
 
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
@@ -39,8 +41,7 @@ export class ProfileView extends React.Component {
   getUser(token) {
     //console.log(localStorage.getItem("user"));
     let url =
-      "https://cinefandb.herokuapp.com/users/" +
-      localStorage.getItem("user");
+      "https://cinefandb.herokuapp.com/users/" + localStorage.getItem("user");
     axios
       .get(url, {
         headers: { Authorization: `Bearer ${token}` },
@@ -74,13 +75,13 @@ export class ProfileView extends React.Component {
       });
   }
 
-    handleDelete() {
-        let token = localStorage.getItem("token");
-        let user = localStorage.getItem("user");
+  handleDelete() {
+    let token = localStorage.getItem("token");
+    let user = localStorage.getItem("user");
     axios
-      .delete(
-        `https://cinefandb.herokuapp.com/users/${user}`, { headers: { Authorization: `Bearer ${token}` } }
-      )
+      .delete(`https://cinefandb.herokuapp.com/users/${user}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then(() => {
         alert(user + " has been deleted");
         localStorage.removeItem("user");
@@ -107,7 +108,7 @@ export class ProfileView extends React.Component {
           <Row>
             <Col>
               <Form style={{ width: "24rem", float: "left" }}>
-                <h1 style={{ textAlign: "center" }}>Profile Details</h1>
+                <h1 className="label">Profile Details</h1>
                 <Form.Group controlId="formBasicUsername">
                   <h3>Username: </h3>
                   <Form.Label>{this.state.username}</Form.Label>
@@ -120,62 +121,61 @@ export class ProfileView extends React.Component {
                   <h3>Date of Birth:</h3>
                   <Form.Label>{this.state.dob}</Form.Label>
                 </Form.Group>
+                <span className="nav-Btn">
                   <Link to={`/update/${this.state.username}`}>
-                    <Button variant="outline-dark" 
-                            type="link"
-                            size="sm" 
-                            block
-                    >
+                    <Button variant="outline-dark" type="link" size="sm" block>
                       Edit Profile
                     </Button>
                   </Link>
-                <Link to={`/`}>
-                  <Button variant="outline-dark" 
-                          type="submit"
-                          size="sm"
-                          block
-                  >
-                    Back to Main
-                  </Button>
-                </Link>
-                <Button variant="outline-danger" 
-                        size="sm"
-                        block
-                        onClick={() => this.handleDelete()}
+                </span>
+                <span className="nav-Btn">
+                  <Link to={`/`}>
+                    <Button
+                      variant="outline-dark"
+                      type="submit"
+                      size="sm"
+                      block
+                    >
+                      Back to Main
+                    </Button>
+                  </Link>
+                </span>
+                <Button
+                  className="profile-deleteBtn"
+                  variant="danger"
+                  size="sm"
+                  block
+                  onClick={() => this.handleDelete()}
                 >
                   Delete Account
                 </Button>
-                
               </Form>
             </Col>
-            <Col>
-              <div
-                className="favoriteMovies"
-                style={{
-                  float: "right",
-                  textAlign: "center",
-                  width: "24rem",
-                }}
-              >
-                <h1>Favorite Movies</h1>
-                {favoriteMovieList.map((movie) => {
-                  return (
-                    <div key={movie._id}>
-                      <Card>
-                        <Card.Body>
-                          <Link to={`/movies/${movie._id}`}>
-                            <Card.Title>{movie.Title}</Card.Title>
-                          </Link>
-                        </Card.Body>
-                      </Card>
-                      <Button onClick={() => this.removeFavorite(movie)}>
-                        Remove
-                      </Button>
-                    </div>
-                  );
-                })}
-              </div>
-            </Col>
+          </Row>
+          <Row className="favesTitle">
+            <h1 className="label">My Favorites</h1>
+          </Row>
+          <Row className="favesList">
+            {favoriteMovieList.map((movie) => {
+              return (
+                <Col className="profile-faves" sm="4" key={movie._id}>
+                  <span className="nav-Btn">
+                    <Button
+                      onClick={() => this.removeFavorite(movie)}
+                      variant="dark"
+                      className="profile-deleteFave"
+                    >
+                      Delete
+                    </Button>
+                  </span>
+                  <MovieCard
+                    className="profile-movieCard"
+                    movie={movie}
+                    key={movie._id}
+                  />
+                </Col>
+              );
+            })}
           </Row>
         </Container>
       </div>

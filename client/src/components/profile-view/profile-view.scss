@@ -1,3 +1,36 @@
 .userProfile {
   color: white;
 }
+
+.favesTitle {
+  margin-top: 40px;
+  margin-bottom: -20px;
+}
+
+.favesList {
+  margin-top: 30px;
+}
+
+.profile-movieCard {
+  margin-bottom: 50px;
+  transition: 0.5s;
+  &:hover {
+    opacity: 0.5;
+    transition: 0.7s;
+  }
+}
+
+.nav-Btn :hover {
+  text-decoration: none !important;
+}
+
+.profile-deleteBtn {
+  background-color: #c92332;
+  &:hover {
+    background-color: #1e1e1e;
+  }
+}
+
+.profile-deleteFave {
+  margin-bottom: 10px;
+}

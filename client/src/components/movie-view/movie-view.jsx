@@ -42,21 +42,22 @@ export class MovieView extends React.Component {
 
     return (
       <div className="movie-view">
-        <div className='backDropWrap'>
-          <img src={movie.BackdropPath} className='backDrop' />
+        <div className="backDropWrap">
+          <img src={movie.BackdropPath} className="backDrop" />
         </div>
         <div className="nav-buttons">
-          <Link to={`/`}>
-            <Button variant="outline-dark" 
-                            type="link"
-                            size="md" 
-                            className="backBtn"
-                            >Back</Button>
-          </Link>
-          <span className="addToFavorites">
-            <Button variant="outline-dark" 
-                            type="link"
-                            size="md" 
+          <span className="backBtn nav-Btn">
+            <Link to={`/`}>
+              <Button variant="outline-dark" type="link" size="md">
+                Back
+              </Button>
+            </Link>
+          </span>
+          <span className="addToFavorites nav-Btn">
+            <Button
+              variant="outline-dark"
+              type="link"
+              size="md"
               onClick={() => this.addFavorite(movie)}
             >
               Add to Favorites
@@ -70,27 +71,29 @@ export class MovieView extends React.Component {
           <span className="value">{movie.Title}</span>
         </div>
         <Row>
-            <Col>
-              <div className='movieView-description'>
-                <span className='value'>{movie.Description}</span>
-              </div>
-            </Col>
+          <Col>
+            <div className="movieView-description">
+              <span className="value">{movie.Description}</span>
+            </div>
+          </Col>
         </Row>
 
-
-
         <div className="movieView-links">
-          <Link to={`/directors/${movie.Director.Name}`}>
-            <Button variant="outline-dark" 
-                    type="link"
-                    size="md" >Director: {movie.Director.Name}</Button>
-          </Link>
-          <Link to={`/genres/${movie.Genre.Name}`}>
-            <Button variant="outline-dark" 
-                            type="link"
-                            size="md">Genre: {movie.Genre.Name}</Button>
-          </Link>
-          </div>
+          <span className="nav-Btn">
+            <Link to={`/directors/${movie.Director.Name}`}>
+              <Button variant="outline-dark" type="link" size="md">
+                Director: {movie.Director.Name}
+              </Button>
+            </Link>
+          </span>
+          <span className="nav-Btn">
+            <Link to={`/genres/${movie.Genre.Name}`}>
+              <Button variant="outline-dark" type="link" size="md">
+                Genre: {movie.Genre.Name}
+              </Button>
+            </Link>
+          </span>
+        </div>
       </div>
     );
   }

@@ -41,16 +41,3 @@ a :hover {
 .navbar-dark a :hover {
   color: #ede13f !important;
 }
-
-.main-card {
-  margin-bottom: 50px;
-  transition: 0.5s;
-  &:hover {
-    opacity: 0.5;
-    transition: 0.7s;
-  }
-}
-
-.movieCard-cardBody :hover {
-  text-decoration: none;
-}

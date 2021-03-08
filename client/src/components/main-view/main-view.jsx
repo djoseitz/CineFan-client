@@ -179,7 +179,12 @@ class MainView extends React.Component {
               return <MoviesList movies={movies} />;
             }}
           />
-          <Route path="/register" render={() => <RegistrationView onLoggedIn={(user) => this.onLoggedIn(user)}/>} />
+          <Route
+            path="/register"
+            render={() => (
+              <RegistrationView onLoggedIn={(user) => this.onLoggedIn(user)} />
+            )}
+          />
 
           <Route
             path="/users/"

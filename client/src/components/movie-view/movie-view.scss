@@ -39,6 +39,7 @@
 .movieView-description {
   display: flex !important;
   justify-content: center !important;
+  margin-bottom: -35px;
 }
 
 .movieView-description > * {
@@ -65,14 +66,13 @@
   float: right;
 }
 
-.addToFavorites :hover {
+.nav-Btn :hover {
   color: #ede13f !important;
 }
 
 .movieView-links {
   display: flex;
   justify-content: center;
-  margin-top: -30px;
   margin-bottom: 50px;
 }
 
@@ -82,9 +82,5 @@
 }
 
 .btn-link :hover {
-  background-color: white !important;
-}
-
-.backBtn :hover {
-  color: #ede13f !important;
+  background-color: #ede13f !important;
 }

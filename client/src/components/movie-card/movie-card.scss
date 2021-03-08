@@ -1,9 +1,3 @@
-.card {
-  box-shadow: 4px 4px 5px 0px black;
-  border: none;
-  height: 100%;
-}
-
 .card-body {
   text-align: center;
   padding: 8px;
@@ -14,7 +8,7 @@
   line-height: 1.1;
   color: white;
 }
-.movieCard-img {
+.card-img {
   padding: 5px;
 }
 .movieCard-description {

@@ -21,8 +21,7 @@ export function ProfileUpdate(props) {
     const isValid = formValidation();
 
     const url =
-      "https://cinefandb.herokuapp.com/users/" +
-      localStorage.getItem("user");
+      "https://cinefandb.herokuapp.com/users/" + localStorage.getItem("user");
 
     if (isValid) {
       axios

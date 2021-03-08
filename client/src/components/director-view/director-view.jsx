@@ -1,15 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Card from 'react-bootstrap/Card';
-import './director-view.scss';
+import React from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Card from "react-bootstrap/Card";
+import "./director-view.scss";
 
 export class DirectorView extends React.Component {
-  
   constructor() {
     super();
 
@@ -23,14 +22,16 @@ export class DirectorView extends React.Component {
 
     return (
       <Container className="wrapper container-fluid">
-        <Button
-          onClick={() => window.history.back()}
-          variant='dark'
-          className='backBtn'>
-          <i className='fas fa-arrow-left'></i> Back
-        </Button>
+        <span className="nav-Btn">
+          <Button
+            onClick={() => window.history.back()}
+            variant="dark"
+            className="backBtn"
+          >
+            <i className="fas fa-arrow-left"></i> Back
+          </Button>
+        </span>
         <Row>
-          <Col className="col-3" />
           {/* <Col className="director-view container-fluid align-items-center col-6">
             <img
               className="director-poster"
@@ -38,11 +39,11 @@ export class DirectorView extends React.Component {
             />
           </Col> */}
           <Col className="director-view container-fluid align-items-center col-6">
-            <img
-              className="director-poster"
-              src={director.Director.Headshot}
-            />
             <div className="director-info">
+              <img
+                className="director-headshot"
+                src={director.Director.Headshot}
+              />
               <div className="director-title">
                 <span className="label">Name: </span>
                 <span className="value">{director.Director.Name}</span>
@@ -52,16 +53,15 @@ export class DirectorView extends React.Component {
                 <span className="value">{director.Director.Bio}</span>
               </div>
               <div className="director-birth">
-                <span className="label">Born:  </span>
+                <span className="label">Born: </span>
                 <span className="value">{director.Director.Birth}</span>
               </div>
               <div className="director-death">
-                <span className="label">Died:  </span>
+                <span className="label">Died: </span>
                 <span className="value">{director.Director.Death}</span>
               </div>
             </div>
           </Col>
-          <Col className="col-3" />
         </Row>
         <Container>
           <h4 className="mt-4">Some {director.Director.Name} movies</h4>
@@ -69,22 +69,32 @@ export class DirectorView extends React.Component {
             {movies.map((movie) => {
               if (movie.Director.Name === director.Director.Name) {
                 return (
-                <div key={movie._id}>
-                  <Card
-                    className="mb-3 mr-2 h-100"
-                    style={{ width: '16rem' }}
-                  >
-                    <Link to={`/movies/${movie._id}`}>
-                      <Card.Img variant="top" src={movie.ImagePath} />
-                      <Card.Body>
-                          <Card.Title>{movie.Title}</Card.Title>
-                        <Card.Text>
-                          {movie.Tagline}
-                        </Card.Text>
-                      </Card.Body>
-                    </Link>
-                  </Card>
-                </div>
+                  <div key={movie._id}>
+                    <Card
+                      className="mb-3 mr-2 h-100"
+                      style={{ width: "16rem" }}
+                    >
+                      <Link to={`/movies/${movie._id}`}>
+                        <Card.Img
+                          className="card-img"
+                          variant="top"
+                          src={movie.ImagePath}
+                          alt={`${movie.Title} Poster`}
+                        />
+                        <Card.Body className="movieCard-cardBody">
+                          <Card.Title className="movieCard-title">
+                            {movie.Title}
+                          </Card.Title>
+                          <Card.Text className="detailInfo">
+                            {movie.Genre.Name}
+                          </Card.Text>
+                          <Card.Text className="movieCard-description">
+                            {movie.Tagline}
+                          </Card.Text>
+                        </Card.Body>
+                      </Link>
+                    </Card>
+                  </div>
                 );
               }
             })}
