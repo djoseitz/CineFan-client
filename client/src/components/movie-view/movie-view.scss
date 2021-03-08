@@ -57,17 +57,16 @@
   padding: 1.5%;
 }
 
-// .label {
-//   font-family: "Lato", sans-serif;
-//   font-weight: 600;
-// }
-
 .nav-buttons {
   margin: 0px 200px 20px;
 }
 
 .addToFavorites {
   float: right;
+}
+
+.addToFavorites :hover {
+  color: #ede13f !important;
 }
 
 .movieView-links {
@@ -79,8 +78,13 @@
 
 .btn {
   margin-right: 5px;
+  color: white;
 }
 
 .btn-link :hover {
   background-color: white !important;
+}
+
+.backBtn :hover {
+  color: #ede13f !important;
 }

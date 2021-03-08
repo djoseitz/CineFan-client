@@ -1,3 +1,22 @@
 .container-fluid {
   color: white;
 }
+
+.genre-title {
+  font-weight: 600;
+  font-size: 250%;
+  text-align: center;
+  padding-top: 20px;
+  color: #ede13f;
+}
+
+.backBtn :hover {
+  color: #ede13f !important;
+}
+
+.mb-3 :hover {
+  text-decoration: none !important;
+  color: white;
+  opacity: 0.5 !important;
+  transition: 0.7s !important;
+}

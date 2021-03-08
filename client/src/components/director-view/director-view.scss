@@ -1,3 +1,14 @@
 .container-fluid {
   color: white;
 }
+
+.director-poster {
+  height: 300px;
+  width: auto;
+  box-shadow: 4px 4px 5px 0px black;
+  margin-bottom: 20px;
+}
+
+a :hover {
+  text-decoration: none !important;
+}

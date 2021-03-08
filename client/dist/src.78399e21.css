@@ -12,6 +12,7 @@
 .btn {
   background-color: #af34bd;
   margin-top: 13px;
+  font-weight: 600;
 }
 
 .btn-link {
@@ -34,7 +35,62 @@ a {
 }
 
 a :hover {
+  text-decoration: none !important;
+}
+
+.navbar-dark a :hover {
   color: #ede13f !important;
+}
+
+.main-card {
+  margin-bottom: 50px;
+  transition: 0.5s;
+}
+.main-card:hover {
+  opacity: 0.5;
+  transition: 0.7s;
+}
+
+.movieCard-cardBody :hover {
+  text-decoration: none;
+}
+.card {
+  box-shadow: 4px 4px 5px 0px black;
+  border: none;
+  height: 100%;
+}
+
+.card-body {
+  text-align: center;
+  padding: 8px;
+  background-color: #181818;
+}
+
+.card-text {
+  margin-bottom: 0;
+  line-height: 1.1;
+  color: white;
+}
+
+.movieCard-img {
+  padding: 5px;
+}
+
+.movieCard-description {
+  padding-top: 10px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.movieCard-title {
+  color: white;
+  font-weight: 600;
+}
+
+.movieCard-cardBody .detailInfo {
+  color: white;
+  text-align: right;
+  font-size: 13px;
 }
 .backDrop {
   position: fixed;
@@ -105,6 +161,10 @@ a :hover {
   float: right;
 }
 
+.addToFavorites :hover {
+  color: #ede13f !important;
+}
+
 .movieView-links {
   display: flex;
   justify-content: center;
@@ -114,13 +174,51 @@ a :hover {
 
 .btn {
   margin-right: 5px;
+  color: white;
 }
 
 .btn-link :hover {
   background-color: white !important;
 }
+
+.backBtn :hover {
+  color: #ede13f !important;
+}
 .container-fluid {
   color: white;
+}
+
+.director-poster {
+  height: 300px;
+  width: auto;
+  box-shadow: 4px 4px 5px 0px black;
+  margin-bottom: 20px;
+}
+
+a :hover {
+  text-decoration: none !important;
+}
+.container-fluid {
+  color: white;
+}
+
+.genre-title {
+  font-weight: 600;
+  font-size: 250%;
+  text-align: center;
+  padding-top: 20px;
+  color: #ede13f;
+}
+
+.backBtn :hover {
+  color: #ede13f !important;
+}
+
+.mb-3 :hover {
+  text-decoration: none !important;
+  color: white;
+  opacity: 0.5 !important;
+  transition: 0.7s !important;
 }
 .userProfile {
   color: white;
@@ -151,6 +249,14 @@ a :hover {
 .card-img {
   width: auto;
   height: 500px;
+}
+
+.backBtn :hover {
+  color: #ede13f;
+}
+
+.main-card :hover {
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=/src.78399e21.css.map */

@@ -50,12 +50,13 @@ export class MovieView extends React.Component {
             <Button variant="outline-dark" 
                             type="link"
                             size="md" 
-                            >Return</Button>
+                            className="backBtn"
+                            >Back</Button>
           </Link>
           <span className="addToFavorites">
-            <Button
-              variant="link"
-              // size="sm"
+            <Button variant="outline-dark" 
+                            type="link"
+                            size="md" 
               onClick={() => this.addFavorite(movie)}
             >
               Add to Favorites
@@ -74,23 +75,20 @@ export class MovieView extends React.Component {
                 <span className='value'>{movie.Description}</span>
               </div>
             </Col>
-          </Row>
+        </Row>
 
 
 
         <div className="movieView-links">
           <Link to={`/directors/${movie.Director.Name}`}>
-            <Button variant="link">Director: {movie.Director.Name}</Button>
+            <Button variant="outline-dark" 
+                    type="link"
+                    size="md" >Director: {movie.Director.Name}</Button>
           </Link>
-          {/* <Button
-            variant="primary"
-            size="sm"
-            href={`/directors/${movie.Director.Name}`}
-          >
-            Director: {movie.Director.Name}
-          </Button> */}
           <Link to={`/genres/${movie.Genre.Name}`}>
-            <Button variant="link">Genre: {movie.Genre.Name}</Button>
+            <Button variant="outline-dark" 
+                            type="link"
+                            size="md">Genre: {movie.Genre.Name}</Button>
           </Link>
           </div>
       </div>

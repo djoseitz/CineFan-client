@@ -144,11 +144,11 @@ class MainView extends React.Component {
                       Movies
                     </Button>
                   </Link>
-                  <Link to={`/about`}>
+                  {/* <Link to={`/about`}>
                     <Button variant="link" className="navbar-link">
                       About
                     </Button>
-                  </Link>
+                  </Link> */}
                   <Link to={`/users/${user}`}>
                     <Button variant="link" className="navbar-link">
                       My Account
