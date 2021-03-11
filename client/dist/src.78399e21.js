@@ -53302,11 +53302,11 @@ function LoginView(props) {
   };
 
   return _react.default.createElement(_reactBootstrap.Container, null, _react.default.createElement(_Form.default, {
-    "class": "loginForm"
+    className: "loginForm"
   }, _react.default.createElement(_Form.default.Group, {
     controlId: "formBasicUsername"
   }, _react.default.createElement(_Form.default.Label, {
-    "class": "label"
+    className: "label"
   }, "Username:"), _react.default.createElement(_Form.default.Control, {
     type: "text",
     placeholder: "Enter username",
@@ -53317,7 +53317,7 @@ function LoginView(props) {
   })), _react.default.createElement(_Form.default.Group, {
     controlId: "formBasicPassword"
   }, _react.default.createElement(_Form.default.Label, {
-    "class": "label"
+    className: "label"
   }, "Password:"), _react.default.createElement(_Form.default.Control, {
     type: "password",
     placeholder: "Password",
@@ -53635,7 +53635,7 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function RegistrationView() {
+function RegistrationView(props) {
   var _useState = (0, _react.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
       Username = _useState2[0],
@@ -54320,19 +54320,22 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
     value: function handleDelete() {
       var token = localStorage.getItem("token");
       var user = localStorage.getItem("user");
+      var confirmation = confirm("Are you sure?");
 
-      _axios.default.delete("https://cinefandb.herokuapp.com/users/".concat(user), {
-        headers: {
-          Authorization: "Bearer ".concat(token)
-        }
-      }).then(function () {
-        alert(user + " has been deleted");
-        localStorage.removeItem("user");
-        localStorage.removeItem("token");
-        window.location.pathname = "/";
-      }).catch(function (error) {
-        console.log(error);
-      });
+      if (confirmation == true) {
+        _axios.default.delete("https://cinefandb.herokuapp.com/users/".concat(user), {
+          headers: {
+            Authorization: "Bearer ".concat(token)
+          }
+        }).then(function () {
+          alert(user + " has been deleted");
+          localStorage.removeItem("user");
+          localStorage.removeItem("token");
+          window.location.pathname = "/";
+        }).catch(function (error) {
+          console.log(error);
+        });
+      }
     }
   }, {
     key: "render",
@@ -54905,7 +54908,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         sticky: "top",
         variant: "dark"
       }, _defineProperty(_React$createElement, "expand", "lg"), _defineProperty(_React$createElement, "className", "navbar shadow-sm mb-5"), _React$createElement), _react.default.createElement(_Navbar.default.Brand, {
-        href: "http://localhost:1234",
+        href: "/",
         className: "navbar-brand"
       }, "CineFan"), _react.default.createElement(_Navbar.default.Toggle, {
         "aria-controls": "basic-navbar-nav"
@@ -55185,7 +55188,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58141" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64575" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

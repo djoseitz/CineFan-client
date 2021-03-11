@@ -110,7 +110,7 @@ class MainView extends React.Component {
             expand="lg"
             className="navbar shadow-sm mb-5"
           >
-            <Navbar.Brand href="http://localhost:1234" className="navbar-brand">
+            <Navbar.Brand href={`/`} className="navbar-brand">
               CineFan
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />

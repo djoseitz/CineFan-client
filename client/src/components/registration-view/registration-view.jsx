@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "./registration-view.scss";
 
-export function RegistrationView() {
+export function RegistrationView(props) {
   const [Username, setUsername] = useState("");
   const [Password, setPassword] = useState("");
   const [Email, setEmail] = useState("");

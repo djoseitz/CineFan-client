@@ -78,7 +78,9 @@ export class ProfileView extends React.Component {
   handleDelete() {
     let token = localStorage.getItem("token");
     let user = localStorage.getItem("user");
-    axios
+    let confirmation = confirm("Are you sure?")
+    if(confirmation==true) {
+      axios
       .delete(`https://cinefandb.herokuapp.com/users/${user}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
@@ -91,6 +93,8 @@ export class ProfileView extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
+    }
+    
   }
 
   render() {
