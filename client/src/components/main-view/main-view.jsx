@@ -101,7 +101,7 @@ class MainView extends React.Component {
     // if (!movies) return <div className="main-view" />;
 
     return (
-      <Router>
+      <Router basename="/client">
         <div className="main-view">
           <Navbar
             expand="lg"
@@ -158,7 +158,7 @@ class MainView extends React.Component {
                     <Button
                       variant="link"
                       className="navbar-link"
-                      onClick={() => this.logOut()}
+                      onClick={() => this.logOut()} href='/client'
                     >
                       Sign Out
                     </Button>

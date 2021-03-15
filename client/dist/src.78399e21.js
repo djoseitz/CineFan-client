@@ -53513,8 +53513,8 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         }
       }).then(function (response) {
         console.log(response); // window.open("/", "_self");
+        // window.open("/users/" + localStorage.getItem("user"), "_self");
 
-        window.open("/users/" + localStorage.getItem("user"), "_self");
         alert("Added to favorites!");
       });
     }
@@ -54901,7 +54901,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       // // Before the movies have been loaded
       // if (!movies) return <div className="main-view" />;
 
-      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("div", {
+      return _react.default.createElement(_reactRouterDom.BrowserRouter, {
+        basename: "/client"
+      }, _react.default.createElement("div", {
         className: "main-view"
       }, _react.default.createElement(_Navbar.default, (_React$createElement = {
         expand: "lg",
@@ -54947,7 +54949,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         className: "navbar-link",
         onClick: function onClick() {
           return _this3.logOut();
-        }
+        },
+        href: "/client"
       }, "Sign Out"))))), _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/",
@@ -55188,7 +55191,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64575" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53648" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
