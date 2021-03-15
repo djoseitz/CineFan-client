@@ -43,7 +43,7 @@ app.use(cors());
 
 var auth = require("./auth")(app);
 
-var allowedOrigins = ["http://localhost:8080", "http://localhost:1234"];
+var allowedOrigins = ["http://localhost:8080", "http://localhost:1234", "https://cinefandb.herokuapp.com"];
 
 app.use(
   cors({
