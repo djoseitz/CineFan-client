@@ -47,3 +47,34 @@ a :hover {
 .navbar-dark a :hover {
   color: #ede13f !important;
 }
+
+@media screen and (max-width: 445px) {
+  .main-title {
+    font-size: 20px;
+    align-self: center;
+  }
+  .nav-item {
+    height: 100%;
+    align-self: flex-end;
+    font-size: 12px;
+  }
+  .nav-link {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .main-title {
+    font-size: 20px;
+    margin: 5px 5px 0px 5px;
+  }
+  .nav-item {
+    height: 100%;
+    align-self: flex-end;
+    font-size: 12px;
+  }
+  .nav-link {
+    margin-top: 0;
+    margin-left: 10px;
+  }
+}
