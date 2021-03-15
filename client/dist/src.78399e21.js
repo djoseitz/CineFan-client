@@ -54331,7 +54331,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
           alert(user + " has been deleted");
           localStorage.removeItem("user");
           localStorage.removeItem("token");
-          window.location.pathname = "/";
+          window.location.pathname = "/client";
         }).catch(function (error) {
           console.log(error);
         });
@@ -54910,7 +54910,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         sticky: "top",
         variant: "dark"
       }, _defineProperty(_React$createElement, "expand", "lg"), _defineProperty(_React$createElement, "className", "navbar shadow-sm mb-5"), _React$createElement), _react.default.createElement(_Navbar.default.Brand, {
-        href: "/",
+        href: "/client",
         className: "navbar-brand"
       }, "CineFan"), _react.default.createElement(_Navbar.default.Toggle, {
         "aria-controls": "basic-navbar-nav"
@@ -55191,7 +55191,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53648" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61256" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

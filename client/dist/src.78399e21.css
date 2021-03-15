@@ -47,6 +47,10 @@ a :hover {
 .navbar-dark a :hover {
   color: #ede13f !important;
 }
+.card {
+  height: 600px !important;
+}
+
 .card-body {
   text-align: center;
   padding: 8px;

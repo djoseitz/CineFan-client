@@ -88,7 +88,7 @@ export class ProfileView extends React.Component {
         alert(user + " has been deleted");
         localStorage.removeItem("user");
         localStorage.removeItem("token");
-        window.location.pathname = "/";
+        window.location.pathname = "/client";
       })
       .catch(function (error) {
         console.log(error);
