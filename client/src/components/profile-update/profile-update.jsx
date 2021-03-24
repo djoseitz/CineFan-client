@@ -83,7 +83,7 @@ export function ProfileUpdate(props) {
 
   return (
     <Container>
-      <h1 color="#ede13f">Update your account</h1>
+      <h1 className="label">Update your account</h1>
       <Form className="registration-form">
         <Form.Group controlId="formBasicUsername">
           <Form.Label>Username:</Form.Label>

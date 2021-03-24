@@ -54523,7 +54523,7 @@ function ProfileUpdate(props) {
         localStorage.setItem("user", data.Username); // props.setUsername(data.Username);
 
         alert("Your profile was updated successfully");
-        window.open("/", "_self");
+        window.open("/client", "_self");
       }).catch(function (e) {
         console.log(e);
         alert("Username contains non alphanumeric characters - not allowed");
@@ -54558,7 +54558,9 @@ function ProfileUpdate(props) {
     return isValid;
   };
 
-  return _react.default.createElement(_Container.default, null, _react.default.createElement("h1", null, "Update your account"), _react.default.createElement(_Form.default, {
+  return _react.default.createElement(_Container.default, null, _react.default.createElement("h1", {
+    className: "label"
+  }, "Update your account"), _react.default.createElement(_Form.default, {
     className: "registration-form"
   }, _react.default.createElement(_Form.default.Group, {
     controlId: "formBasicUsername"
@@ -55191,7 +55193,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61256" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63083" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

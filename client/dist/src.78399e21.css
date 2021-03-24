@@ -47,6 +47,40 @@ a :hover {
 .navbar-dark a :hover {
   color: #ede13f !important;
 }
+
+@media screen and (max-width: 445px) {
+  .main-title {
+    font-size: 20px;
+    align-self: center;
+  }
+
+  .nav-item {
+    height: 100%;
+    align-self: flex-end;
+    font-size: 12px;
+  }
+
+  .nav-link {
+    margin-top: 0;
+  }
+}
+@media screen and (max-width: 340px) {
+  .main-title {
+    font-size: 20px;
+    margin: 5px 5px 0px 5px;
+  }
+
+  .nav-item {
+    height: 100%;
+    align-self: flex-end;
+    font-size: 12px;
+  }
+
+  .nav-link {
+    margin-top: 0;
+    margin-left: 10px;
+  }
+}
 .card {
   height: 600px !important;
 }
@@ -170,6 +204,53 @@ a :hover {
 
 .btn-link :hover {
   background-color: #ede13f !important;
+}
+
+@media screen and (max-width: 1100px) {
+  .backDrop {
+    height: 100%;
+    width: auto;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .favoriteBtn {
+    font-size: 12px;
+  }
+
+  .backBtn {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .movieView-info {
+    font-size: 14px;
+  }
+
+  .movieView-description {
+    flex-direction: column;
+  }
+
+  .movieView-description > .label {
+    width: fit-content;
+  }
+
+  .movieView {
+    margin: 0;
+  }
+
+  .btnWrap {
+    padding: 0;
+    justify-content: space-evenly;
+  }
+}
+@media screen and (max-width: 375px) {
+  .favoriteBtn {
+    font-size: 10px;
+  }
+
+  .backBtn {
+    font-size: 10px;
+  }
 }
 .form-label {
   color: white;
