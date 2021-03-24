@@ -45,7 +45,7 @@ export function ProfileUpdate(props) {
           localStorage.setItem("user", data.Username);
           // props.setUsername(data.Username);
           alert("Your profile was updated successfully");
-          window.open("/", "_self");
+          window.open("/client", "_self");
         })
         .catch((e) => {
           console.log(e);
