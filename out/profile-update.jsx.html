@@ -1,4 +1,32 @@
-import React, { useState } from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: profile-update.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: profile-update.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -16,15 +44,15 @@ export function ProfileUpdate(props) {
   const [emailErr, setEmailErr] = useState({});
 
   /**
-   * Updates user information. Sends <code>PUT</code> request with header
-   * <pre>
+   * Updates user information. Sends &lt;code>PUT&lt;/code> request with header
+   * &lt;pre>
    * {
    *    Username: string,
    *    Password: string,
    *    Email: string,
    *    Birthday: Date.slice(0, 10),
    * }
-   * </pre>
+   * &lt;/pre>
    * @param {String} username
    * @param {String} password
    * @param {String} email
@@ -78,17 +106,17 @@ export function ProfileUpdate(props) {
     const emailErr = {};
     let isValid = true;
 
-    if (username.trim().length < 5) {
+    if (username.trim().length &lt; 5) {
       usernameErr.usernameShort = "Username must be at least 5 characters";
       isValid = false;
     }
 
-    if (password.trim().length < 1) {
+    if (password.trim().length &lt; 1) {
       passwordErr.passwordMissing = "You must enter a password";
       isValid = false;
     }
 
-    if (!email.includes(".") && !email.includes("@")) {
+    if (!email.includes(".") &amp;&amp; !email.includes("@")) {
       emailErr.emailNotEmail = "A valid email address is required";
       isValid = false;
     }
@@ -100,12 +128,12 @@ export function ProfileUpdate(props) {
   };
 
   return (
-    <Container>
-      <h1 className="label">Update your account</h1>
-      <Form className="registration-form">
-        <Form.Group controlId="formBasicUsername">
-          <Form.Label>Username:</Form.Label>
-          <Form.Control
+    &lt;Container>
+      &lt;h1 className="label">Update your account&lt;/h1>
+      &lt;Form className="registration-form">
+        &lt;Form.Group controlId="formBasicUsername">
+          &lt;Form.Label>Username:&lt;/Form.Label>
+          &lt;Form.Control
             type="text"
             value={username}
             placeholder="Enter username"
@@ -114,15 +142,15 @@ export function ProfileUpdate(props) {
           />
           {Object.keys(usernameErr).map((key) => {
             return (
-              <div key={key} style={{ color: "red" }}>
+              &lt;div key={key} style={{ color: "red" }}>
                 {usernameErr[key]}
-              </div>
+              &lt;/div>
             );
           })}
-        </Form.Group>
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password:</Form.Label>
-          <Form.Control
+        &lt;/Form.Group>
+        &lt;Form.Group controlId="formBasicPassword">
+          &lt;Form.Label>Password:&lt;/Form.Label>
+          &lt;Form.Control
             type="password"
             value={password}
             placeholder="Enter password"
@@ -131,25 +159,25 @@ export function ProfileUpdate(props) {
           />
           {Object.keys(passwordErr).map((key) => {
             return (
-              <div key={key} style={{ color: "red" }}>
+              &lt;div key={key} style={{ color: "red" }}>
                 {passwordErr[key]}
-              </div>
+              &lt;/div>
             );
           })}
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Birth Date:</Form.Label>
-          <Form.Control
+        &lt;/Form.Group>
+        &lt;Form.Group>
+          &lt;Form.Label>Birth Date:&lt;/Form.Label>
+          &lt;Form.Control
             type="date"
             value={birthday}
             placeholder="Select Birthday"
             required
             onChange={(e) => setBirthday(e.target.value)}
           />
-        </Form.Group>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email:</Form.Label>
-          <Form.Control
+        &lt;/Form.Group>
+        &lt;Form.Group controlId="formBasicEmail">
+          &lt;Form.Label>Email:&lt;/Form.Label>
+          &lt;Form.Control
             type="email"
             value={email}
             placeholder="name@example.com"
@@ -158,22 +186,45 @@ export function ProfileUpdate(props) {
           />
           {Object.keys(emailErr).map((key) => {
             return (
-              <div key={key} style={{ color: "red" }}>
+              &lt;div key={key} style={{ color: "red" }}>
                 {emailErr[key]}
-              </div>
+              &lt;/div>
             );
           })}
-        </Form.Group>
-        <Link to={`/users/`}>
-          <Button
+        &lt;/Form.Group>
+        &lt;Link to={`/users/`}>
+          &lt;Button
             variant="btn-lg btn-dark btn-block"
             type="submit"
             onClick={handleUpdate}
           >
             Update
-          </Button>
-        </Link>
-      </Form>
-    </Container>
+          &lt;/Button>
+        &lt;/Link>
+      &lt;/Form>
+    &lt;/Container>
   );
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#handleUpdate">handleUpdate</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Tue Apr 20 2021 16:21:28 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

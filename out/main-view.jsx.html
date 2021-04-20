@@ -1,4 +1,32 @@
-import React from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: main-view.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: main-view.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Col from "react-bootstrap/Col";
@@ -48,9 +76,9 @@ class MainView extends React.Component {
 
   /**
    * This method uses received access token to receive movies and user data.
-   * (<code>GET</code> requests)
+   * (&lt;code>GET&lt;/code> requests)
    * If returning users' access token saved in their local storage are valid,
-   * <code>getInfo</code> will use saved token. <br/>
+   * &lt;code>getInfo&lt;/code> will use saved token. &lt;br/>
    * If the token in local storage is expired, it will remove token from the storage
    * and get new token from the server.
    * @param {String} token Access Token
@@ -108,117 +136,117 @@ class MainView extends React.Component {
     let { user } = this.state;
 
     // if (!user)
-    //   return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+    //   return &lt;LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
 
     // // Before the movies have been loaded
-    // if (!movies) return <div className="main-view" />;
+    // if (!movies) return &lt;div className="main-view" />;
 
     return (
-      <Router basename="/client">
-        <div className="main-view">
-          <Navbar
+      &lt;Router basename="/client">
+        &lt;div className="main-view">
+          &lt;Navbar
             expand="lg"
             sticky="top"
             variant="dark"
             expand="lg"
             className="navbar shadow-sm mb-5"
           >
-            <Navbar.Brand href={`/client`} className="navbar-brand">
+            &lt;Navbar.Brand href={`/client`} className="navbar-brand">
               CineFan
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse
+            &lt;/Navbar.Brand>
+            &lt;Navbar.Toggle aria-controls="basic-navbar-nav" />
+            &lt;Navbar.Collapse
               className="justify-content-end"
               id="basic-navbar-nav"
             >
-              <Form inline>
-                <VisibilityFilterInput
+              &lt;Form inline>
+                &lt;VisibilityFilterInput
                   className="mr-sm-2"
                   visibilityFilter={visibilityFilter}
                 />
-              </Form>
+              &lt;/Form>
               {!user ? (
-                <ul>
-                  <Link to={`/`}>
-                    <Button variant="link" className="navbar-link">
+                &lt;ul>
+                  &lt;Link to={`/`}>
+                    &lt;Button variant="link" className="navbar-link">
                       Sign In
-                    </Button>
-                  </Link>
-                  <Link to={`/register`}>
-                    <Button variant="link" className="navbar-link">
+                    &lt;/Button>
+                  &lt;/Link>
+                  &lt;Link to={`/register`}>
+                    &lt;Button variant="link" className="navbar-link">
                       Register
-                    </Button>
-                  </Link>
-                </ul>
+                    &lt;/Button>
+                  &lt;/Link>
+                &lt;/ul>
               ) : (
-                <ul>
-                  <Link to={`/`}>
-                    <Button variant="link" className="navbar-link">
+                &lt;ul>
+                  &lt;Link to={`/`}>
+                    &lt;Button variant="link" className="navbar-link">
                       Movies
-                    </Button>
-                  </Link>
-                  {/* <Link to={`/about`}>
-                    <Button variant="link" className="navbar-link">
+                    &lt;/Button>
+                  &lt;/Link>
+                  {/* &lt;Link to={`/about`}>
+                    &lt;Button variant="link" className="navbar-link">
                       About
-                    </Button>
-                  </Link> */}
-                  <Link to={`/users/${user}`}>
-                    <Button variant="link" className="navbar-link">
+                    &lt;/Button>
+                  &lt;/Link> */}
+                  &lt;Link to={`/users/${user}`}>
+                    &lt;Button variant="link" className="navbar-link">
                       My Account
-                    </Button>
-                  </Link>
-                  <Link to={`/`}>
-                    <Button
+                    &lt;/Button>
+                  &lt;/Link>
+                  &lt;Link to={`/`}>
+                    &lt;Button
                       variant="link"
                       className="navbar-link"
                       onClick={() => this.logOut()} href='/client'
                     >
                       Sign Out
-                    </Button>
-                  </Link>
-                </ul>
+                    &lt;/Button>
+                  &lt;/Link>
+                &lt;/ul>
               )}
-            </Navbar.Collapse>
-          </Navbar>
+            &lt;/Navbar.Collapse>
+          &lt;/Navbar>
 
-          <Route
+          &lt;Route
             exact
             path="/"
             render={() => {
               if (!user)
                 return (
-                  <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                  &lt;LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
                 );
-              return <MoviesList movies={movies} />;
+              return &lt;MoviesList movies={movies} />;
             }}
           />
-          <Route
+          &lt;Route
             path="/register"
             render={() => (
-              <RegistrationView onLoggedIn={(user) => this.onLoggedIn(user)} />
+              &lt;RegistrationView onLoggedIn={(user) => this.onLoggedIn(user)} />
             )}
           />
 
-          <Route
+          &lt;Route
             path="/users/"
             render={() => (
-              <ProfileView movies={movies} logOutFunc={() => this.logOut()} />
+              &lt;ProfileView movies={movies} logOutFunc={() => this.logOut()} />
             )}
           />
-          <Route
+          &lt;Route
             path="/movies/:movieId"
             render={({ match }) => (
-              <MovieView
+              &lt;MovieView
                 movie={movies.find((m) => m._id === match.params.movieId)}
               />
             )}
           />
-          <Route
+          &lt;Route
             path="/directors/:name"
             render={({ match }) => {
-              if (!movies) return <div className="main-view" />;
+              if (!movies) return &lt;div className="main-view" />;
               return (
-                <DirectorView
+                &lt;DirectorView
                   director={movies.find(
                     (m) => m.Director.Name === match.params.name
                   )}
@@ -227,26 +255,26 @@ class MainView extends React.Component {
               );
             }}
           />
-          <Route
+          &lt;Route
             path="/genres/:name"
             render={({ match }) => {
-              if (!movies) return <div className="main-view" />;
+              if (!movies) return &lt;div className="main-view" />;
               return (
-                <GenreView
+                &lt;GenreView
                   genre={movies.find((m) => m.Genre.Name === match.params.name)}
                   movies={movies}
                 />
               );
             }}
           />
-          <Route
+          &lt;Route
             path="/update/:userId"
             render={() => {
-              return <ProfileUpdate />;
+              return &lt;ProfileUpdate />;
             }}
           />
-        </div>
-      </Router>
+        &lt;/div>
+      &lt;/Router>
     );
   }
 }
@@ -256,3 +284,26 @@ let mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, { setMovies })(MainView);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#getMovies">getMovies</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Tue Apr 20 2021 16:21:13 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

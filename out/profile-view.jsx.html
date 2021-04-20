@@ -1,4 +1,32 @@
-import React, { useState } from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: profile-view.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: profile-view.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -60,8 +88,8 @@ export class ProfileView extends React.Component {
 
   /**
    * Receives a movie data to delete from user's favorite list.
-   * Sends <code>POST</code> request.
-   * @param {Object<Array>} movie Movie data
+   * Sends &lt;code>POST&lt;/code> request.
+   * @param {Object&lt;Array>} movie Movie data
    * @name removeFavorite
    * @async
    * @method
@@ -85,7 +113,7 @@ export class ProfileView extends React.Component {
   }
 
   /**
-   * Deletes user's account permanently. Sends <code>DELETE</code> request.
+   * Deletes user's account permanently. Sends &lt;code>DELETE&lt;/code> request.
    * @param {String} user
    * @async
    * @method
@@ -124,44 +152,44 @@ export class ProfileView extends React.Component {
 
     if (!movies) alert("Please sign in");
     return (
-      <div className="userProfile" style={{ display: "flex" }}>
-        <Container>
-          <Row>
-            <Col>
-              <Form style={{ width: "24rem", float: "left" }}>
-                <h1 className="label">Profile Details</h1>
-                <Form.Group controlId="formBasicUsername">
-                  <h3>Username: </h3>
-                  <Form.Label>{this.state.username}</Form.Label>
-                </Form.Group>
-                <Form.Group controlId="formBasicEmail">
-                  <h3>Email:</h3>
-                  <Form.Label>{this.state.email}</Form.Label>
-                </Form.Group>
-                <Form.Group controlId="formBasicDate">
-                  <h3>Date of Birth:</h3>
-                  <Form.Label>{this.state.dob}</Form.Label>
-                </Form.Group>
-                <span className="nav-Btn">
-                  <Link to={`/update/${this.state.username}`}>
-                    <Button variant="outline-dark" type="link" size="sm" block>
+      &lt;div className="userProfile" style={{ display: "flex" }}>
+        &lt;Container>
+          &lt;Row>
+            &lt;Col>
+              &lt;Form style={{ width: "24rem", float: "left" }}>
+                &lt;h1 className="label">Profile Details&lt;/h1>
+                &lt;Form.Group controlId="formBasicUsername">
+                  &lt;h3>Username: &lt;/h3>
+                  &lt;Form.Label>{this.state.username}&lt;/Form.Label>
+                &lt;/Form.Group>
+                &lt;Form.Group controlId="formBasicEmail">
+                  &lt;h3>Email:&lt;/h3>
+                  &lt;Form.Label>{this.state.email}&lt;/Form.Label>
+                &lt;/Form.Group>
+                &lt;Form.Group controlId="formBasicDate">
+                  &lt;h3>Date of Birth:&lt;/h3>
+                  &lt;Form.Label>{this.state.dob}&lt;/Form.Label>
+                &lt;/Form.Group>
+                &lt;span className="nav-Btn">
+                  &lt;Link to={`/update/${this.state.username}`}>
+                    &lt;Button variant="outline-dark" type="link" size="sm" block>
                       Edit Profile
-                    </Button>
-                  </Link>
-                </span>
-                <span className="nav-Btn">
-                  <Link to={`/`}>
-                    <Button
+                    &lt;/Button>
+                  &lt;/Link>
+                &lt;/span>
+                &lt;span className="nav-Btn">
+                  &lt;Link to={`/`}>
+                    &lt;Button
                       variant="outline-dark"
                       type="submit"
                       size="sm"
                       block
                     >
                       Back to Main
-                    </Button>
-                  </Link>
-                </span>
-                <Button
+                    &lt;/Button>
+                  &lt;/Link>
+                &lt;/span>
+                &lt;Button
                   className="profile-deleteBtn"
                   variant="danger"
                   size="sm"
@@ -169,37 +197,37 @@ export class ProfileView extends React.Component {
                   onClick={() => this.handleDelete()}
                 >
                   Delete Account
-                </Button>
-              </Form>
-            </Col>
-          </Row>
-          <Row className="favesTitle">
-            <h1 className="label">My Favorites</h1>
-          </Row>
-          <Row className="favesList">
+                &lt;/Button>
+              &lt;/Form>
+            &lt;/Col>
+          &lt;/Row>
+          &lt;Row className="favesTitle">
+            &lt;h1 className="label">My Favorites&lt;/h1>
+          &lt;/Row>
+          &lt;Row className="favesList">
             {favoriteMovieList.map((movie) => {
               return (
-                <Col className="profile-faves" sm="4" key={movie._id}>
-                  <span className="nav-Btn">
-                    <Button
+                &lt;Col className="profile-faves" sm="4" key={movie._id}>
+                  &lt;span className="nav-Btn">
+                    &lt;Button
                       onClick={() => this.removeFavorite(movie)}
                       variant="dark"
                       className="profile-deleteFave"
                     >
                       Delete
-                    </Button>
-                  </span>
-                  <MovieCard
+                    &lt;/Button>
+                  &lt;/span>
+                  &lt;MovieCard
                     className="profile-movieCard"
                     movie={movie}
                     key={movie._id}
                   />
-                </Col>
+                &lt;/Col>
               );
             })}
-          </Row>
-        </Container>
-      </div>
+          &lt;/Row>
+        &lt;/Container>
+      &lt;/div>
     );
   }
 }
@@ -207,3 +235,26 @@ export class ProfileView extends React.Component {
 ProfileView.propTypes = {
   movies: PropTypes.array.isRequired,
 };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#handleDelete">handleDelete</a></li><li><a href="global.html#removeFavorite">removeFavorite</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Tue Apr 20 2021 16:21:33 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

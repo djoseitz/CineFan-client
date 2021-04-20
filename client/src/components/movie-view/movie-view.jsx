@@ -13,6 +13,16 @@ export class MovieView extends React.Component {
     this.state = {};
   }
 
+  /**
+   * This method will add selected movie's ID to user's favorite list. <br/>
+   * It checks if selected movie already exists on user's favorite list, then,
+   * it sends <code>POST</code> request to server to update favorite list.
+   * @param {Object} movie Selected movie data received from click event
+   * @method
+   * @async
+   * @global
+   */
+
   addFavorite(movie) {
     let token = localStorage.getItem("token");
     let url =

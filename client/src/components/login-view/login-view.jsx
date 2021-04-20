@@ -11,6 +11,16 @@ export function LoginView(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  /**
+   * Triggers when "Login" button is clicked. This method will send <code>POST</code>
+   * request to the server with header contains <code>Username</code> and <code>Password</code>
+   * Then, with response data, calls <code>{@link onLoggedIn|onLoggedIn}</code> method from its props.
+   * @param {MouseEvent} e On click "Login" button
+   * @name handleSubmitLogin
+   * @method
+   * @async
+   */
+
   const handleSubmit = (e) => {
     e.preventDefault();
     /* Send a request to the server for authentication */

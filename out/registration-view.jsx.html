@@ -1,4 +1,32 @@
-import React, { useState } from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: registration-view.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: registration-view.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -23,16 +51,16 @@ export function RegistrationView(props) {
   };
 
   /**
-   * Registers new user. Send <code>POST</code> request with header.
-   * <code>handlesubmitRegister</code> then call <code>{@link login|login}</code>
-   * <pre>
+   * Registers new user. Send &lt;code>POST&lt;/code> request with header.
+   * &lt;code>handlesubmitRegister&lt;/code> then call &lt;code>{@link login|login}&lt;/code>
+   * &lt;pre>
    * {
    *    Username: string
    *    Password: string
    *    Email: string
    *    Birthday: Date
    * }
-   * </pre>
+   * &lt;/pre>
    * @param {MouseEvent} e On click "Register" button
    * @mehtod
    * @async
@@ -75,7 +103,7 @@ export function RegistrationView(props) {
 
   /**
    * Logs in the new user with user data received from
-   * <code>{@link handlesubmitRegister|handlesubmitRegister}</code>
+   * &lt;code>{@link handlesubmitRegister|handlesubmitRegister}&lt;/code>
    * @param {Object} data New user data
    * @name login
    * @method
@@ -103,17 +131,17 @@ export function RegistrationView(props) {
     const emailErr = {};
     let isValid = true;
 
-    if (Username.trim().length < 5) {
+    if (Username.trim().length &lt; 5) {
       usernameErr.usernameShort = "Username must be at least 5 characters";
       isValid = false;
     }
 
-    if (Password.trim().length < 1) {
+    if (Password.trim().length &lt; 1) {
       passwordErr.passwordMissing = "You must enter a password";
       isValid = false;
     }
 
-    if (!Email.includes(".") && !email.includes("@")) {
+    if (!Email.includes(".") &amp;&amp; !email.includes("@")) {
       emailErr.emailNotEmail = "A valid email address is required";
       isValid = false;
     }
@@ -125,12 +153,12 @@ export function RegistrationView(props) {
   };
 
   return (
-    <Container>
-      <h1 className="label">Register a new account</h1>
-      <Form className="registration-form">
-        <Form.Group controlId="formBasicUsername">
-          <Form.Label>Username:</Form.Label>
-          <Form.Control
+    &lt;Container>
+      &lt;h1 className="label">Register a new account&lt;/h1>
+      &lt;Form className="registration-form">
+        &lt;Form.Group controlId="formBasicUsername">
+          &lt;Form.Label>Username:&lt;/Form.Label>
+          &lt;Form.Control
             type="text"
             value={Username}
             placeholder="Enter username"
@@ -139,15 +167,15 @@ export function RegistrationView(props) {
           />
           {Object.keys(usernameErr).map((key) => {
             return (
-              <div key={key} style={{ color: "red" }}>
+              &lt;div key={key} style={{ color: "red" }}>
                 {usernameErr[key]}
-              </div>
+              &lt;/div>
             );
           })}
-        </Form.Group>
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password:</Form.Label>
-          <Form.Control
+        &lt;/Form.Group>
+        &lt;Form.Group controlId="formBasicPassword">
+          &lt;Form.Label>Password:&lt;/Form.Label>
+          &lt;Form.Control
             type="password"
             value={Password}
             placeholder="Enter password"
@@ -156,25 +184,25 @@ export function RegistrationView(props) {
           />
           {Object.keys(passwordErr).map((key) => {
             return (
-              <div key={key} style={{ color: "red" }}>
+              &lt;div key={key} style={{ color: "red" }}>
                 {passwordErr[key]}
-              </div>
+              &lt;/div>
             );
           })}
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Birth Date:</Form.Label>
-          <Form.Control
+        &lt;/Form.Group>
+        &lt;Form.Group>
+          &lt;Form.Label>Birth Date:&lt;/Form.Label>
+          &lt;Form.Control
             type="date"
             value={Birthday}
             placeholder="Select Birthday"
             required
             onChange={(e) => setBirthday(e.target.value)}
           />
-        </Form.Group>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email:</Form.Label>
-          <Form.Control
+        &lt;/Form.Group>
+        &lt;Form.Group controlId="formBasicEmail">
+          &lt;Form.Label>Email:&lt;/Form.Label>
+          &lt;Form.Control
             type="email"
             value={Email}
             placeholder="name@example.com"
@@ -183,24 +211,47 @@ export function RegistrationView(props) {
           />
           {Object.keys(emailErr).map((key) => {
             return (
-              <div key={key} style={{ color: "red" }}>
+              &lt;div key={key} style={{ color: "red" }}>
                 {emailErr[key]}
-              </div>
+              &lt;/div>
             );
           })}
-        </Form.Group>
-        <span className="nav-Btn">
-          <Link to={`/users/`}>
-            <Button
+        &lt;/Form.Group>
+        &lt;span className="nav-Btn">
+          &lt;Link to={`/users/`}>
+            &lt;Button
               variant="btn-lg btn-dark btn-block"
               type="submit"
               onClick={handleSubmit}
             >
               Register
-            </Button>
-          </Link>
-        </span>
-      </Form>
-    </Container>
+            &lt;/Button>
+          &lt;/Link>
+        &lt;/span>
+      &lt;/Form>
+    &lt;/Container>
   );
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#handleSubmit">handleSubmit</a></li><li><a href="global.html#login">login</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Tue Apr 20 2021 16:21:41 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
