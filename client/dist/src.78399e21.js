@@ -53284,6 +53284,16 @@ function LoginView(props) {
       _useState4 = _slicedToArray(_useState3, 2),
       password = _useState4[0],
       setPassword = _useState4[1];
+  /**
+   * Triggers when "Login" button is clicked. This method will send <code>POST</code>
+   * request to the server with header contains <code>Username</code> and <code>Password</code>
+   * Then, with response data, calls <code>{@link onLoggedIn|onLoggedIn}</code> method from its props.
+   * @param {MouseEvent} e On click "Login" button
+   * @name handleSubmitLogin
+   * @method
+   * @async
+   */
+
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
@@ -53497,6 +53507,16 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
     _this.state = {};
     return _this;
   }
+  /**
+   * This method will add selected movie's ID to user's favorite list. <br/>
+   * It checks if selected movie already exists on user's favorite list, then,
+   * it sends <code>POST</code> request to server to update favorite list.
+   * @param {Object} movie Selected movie data received from click event
+   * @method
+   * @async
+   * @global
+   */
+
 
   _createClass(MovieView, [{
     key: "addFavorite",
@@ -53677,6 +53697,23 @@ function RegistrationView(props) {
     Email: Email,
     Birthday: Birthday
   };
+  /**
+   * Registers new user. Send <code>POST</code> request with header.
+   * <code>handlesubmitRegister</code> then call <code>{@link login|login}</code>
+   * <pre>
+   * {
+   *    Username: string
+   *    Password: string
+   *    Email: string
+   *    Birthday: Date
+   * }
+   * </pre>
+   * @param {MouseEvent} e On click "Register" button
+   * @mehtod
+   * @async
+   * @global
+   * @name handleSubmit
+   */
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
@@ -53703,6 +53740,15 @@ function RegistrationView(props) {
       });
     }
   };
+  /**
+   * Logs in the new user with user data received from
+   * <code>{@link handlesubmitRegister|handlesubmitRegister}</code>
+   * @param {Object} data New user data
+   * @name login
+   * @method
+   * @async
+   */
+
 
   var login = function login(data) {
     _axios.default.post("https://cinefandb.herokuapp.com/login", {
@@ -54296,6 +54342,16 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         });
       });
     }
+    /**
+     * Receives a movie data to delete from user's favorite list.
+     * Sends <code>POST</code> request.
+     * @param {Object<Array>} movie Movie data
+     * @name removeFavorite
+     * @async
+     * @method
+     * @global
+     */
+
   }, {
     key: "removeFavorite",
     value: function removeFavorite(movie) {
@@ -54315,6 +54371,15 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         _this3.componentDidMount();
       });
     }
+    /**
+     * Deletes user's account permanently. Sends <code>DELETE</code> request.
+     * @param {String} user
+     * @async
+     * @method
+     * @global
+     * @name handleDelete
+     */
+
   }, {
     key: "handleDelete",
     value: function handleDelete() {
@@ -54501,6 +54566,25 @@ function ProfileUpdate(props) {
       _useState14 = _slicedToArray(_useState13, 2),
       emailErr = _useState14[0],
       setEmailErr = _useState14[1];
+  /**
+   * Updates user information. Sends <code>PUT</code> request with header
+   * <pre>
+   * {
+   *    Username: string,
+   *    Password: string,
+   *    Email: string,
+   *    Birthday: Date.slice(0, 10),
+   * }
+   * </pre>
+   * @param {String} username
+   * @param {String} password
+   * @param {String} email
+   * @param {Date} birthday
+   * @name handleUpdate
+   * @method
+   * @async
+   */
+
 
   var handleUpdate = function handleUpdate(e) {
     e.preventDefault();
@@ -54634,70 +54718,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../.nvm/versions/node/v14.15.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/movies-list/movies-list.jsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactRedux = require("react-redux");
-
-var _reactBootstrap = require("react-bootstrap");
-
-require("./movies-list.scss");
-
-var _movieCard = require("../movie-card/movie-card");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var mapStateToProps = function mapStateToProps(state) {
-  var visibilityFilter = state.visibilityFilter;
-  return {
-    visibilityFilter: visibilityFilter
-  };
-};
-
-function MoviesList(props) {
-  var movies = props.movies,
-      visibilityFilter = props.visibilityFilter;
-  var filteredMovies = movies;
-
-  if (visibilityFilter !== "") {
-    filteredMovies = movies.filter(function (m) {
-      return m.Title.toLocaleLowerCase().includes(visibilityFilter.toLocaleLowerCase());
-    });
-  }
-
-  if (!movies) return _react.default.createElement("div", {
-    className: "main-view"
-  });
-  return _react.default.createElement("div", {
-    className: "movies-list"
-  }, _react.default.createElement(_reactBootstrap.Row, {
-    className: "justify-content-center"
-  }, filteredMovies.map(function (m, index) {
-    return _react.default.createElement(_reactBootstrap.Col, {
-      key: index,
-      className: "main-card",
-      lg: "3",
-      md: "4",
-      sm: "6",
-      xs: "10"
-    }, _react.default.createElement(_movieCard.MovieCard, {
-      key: m._id,
-      movie: m
-    }));
-  })));
-}
-
-var _default = (0, _reactRedux.connect)(mapStateToProps)(MoviesList);
-
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./movies-list.scss":"components/movies-list/movies-list.scss","../movie-card/movie-card":"components/movie-card/movie-card.jsx"}],"components/visibility-filter-input/visibility-filter-input.jsx":[function(require,module,exports) {
+},{"_css_loader":"../../../../../.nvm/versions/node/v14.15.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/visibility-filter-input/visibility-filter-input.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -54732,7 +54753,75 @@ var _default = (0, _reactRedux.connect)(null, {
 })(VisibilityFilterInput);
 
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-redux":"../node_modules/react-redux/es/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","../../actions/actions":"actions/actions.jsx"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-redux":"../node_modules/react-redux/es/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","../../actions/actions":"actions/actions.jsx"}],"components/movies-list/movies-list.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRedux = require("react-redux");
+
+var _reactBootstrap = require("react-bootstrap");
+
+require("./movies-list.scss");
+
+var _visibilityFilterInput = _interopRequireDefault(require("../visibility-filter-input/visibility-filter-input"));
+
+var _movieCard = require("../movie-card/movie-card");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state) {
+  var visibilityFilter = state.visibilityFilter;
+  return {
+    visibilityFilter: visibilityFilter
+  };
+};
+
+function MoviesList(props) {
+  var movies = props.movies,
+      visibilityFilter = props.visibilityFilter;
+  var filteredMovies = movies;
+
+  if (visibilityFilter !== "") {
+    filteredMovies = movies.filter(function (m) {
+      return m.Title.toLocaleLowerCase().includes(visibilityFilter.toLocaleLowerCase());
+    });
+  }
+
+  if (!movies) return _react.default.createElement("div", {
+    className: "main-view"
+  });
+  return _react.default.createElement("div", {
+    className: "movies-list"
+  }, _react.default.createElement(_visibilityFilterInput.default, {
+    className: "mr-sm-2",
+    visibilityFilter: visibilityFilter
+  }), _react.default.createElement(_reactBootstrap.Row, {
+    className: "justify-content-center"
+  }, filteredMovies.map(function (m, index) {
+    return _react.default.createElement(_reactBootstrap.Col, {
+      key: index,
+      className: "main-card",
+      lg: "3",
+      md: "4",
+      sm: "6",
+      xs: "10"
+    }, _react.default.createElement(_movieCard.MovieCard, {
+      key: m._id,
+      movie: m
+    }));
+  })));
+}
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(MoviesList);
+
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./movies-list.scss":"components/movies-list/movies-list.scss","../visibility-filter-input/visibility-filter-input":"components/visibility-filter-input/visibility-filter-input.jsx","../movie-card/movie-card":"components/movie-card/movie-card.jsx"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -54841,6 +54930,19 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         this.getMovies(accessToken);
       }
     }
+    /**
+     * This method uses received access token to receive movies and user data.
+     * (<code>GET</code> requests)
+     * If returning users' access token saved in their local storage are valid,
+     * <code>getInfo</code> will use saved token. <br/>
+     * If the token in local storage is expired, it will remove token from the storage
+     * and get new token from the server.
+     * @param {String} token Access Token
+     * @method
+     * @name getMovies
+     * @async
+     */
+
   }, {
     key: "getMovies",
     value: function getMovies(token) {
@@ -54919,12 +55021,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }), _react.default.createElement(_Navbar.default.Collapse, {
         className: "justify-content-end",
         id: "basic-navbar-nav"
-      }, _react.default.createElement(_reactBootstrap.Form, {
-        inline: true
-      }, _react.default.createElement(_visibilityFilterInput.default, {
-        className: "mr-sm-2",
-        visibilityFilter: visibilityFilter
-      })), !user ? _react.default.createElement("ul", null, _react.default.createElement(_reactRouterDom.Link, {
+      }, !user ? _react.default.createElement("ul", null, _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
         variant: "link",
@@ -55138,18 +55235,18 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 var store = (0, _redux.createStore)(_reducers.default); // Main component (will eventually use all the others)
 
-var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
-  _inherits(MyFlixApplication, _React$Component);
+var CineFanApplication = /*#__PURE__*/function (_React$Component) {
+  _inherits(CineFanApplication, _React$Component);
 
-  var _super = _createSuper(MyFlixApplication);
+  var _super = _createSuper(CineFanApplication);
 
-  function MyFlixApplication() {
-    _classCallCheck(this, MyFlixApplication);
+  function CineFanApplication() {
+    _classCallCheck(this, CineFanApplication);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass(MyFlixApplication, [{
+  _createClass(CineFanApplication, [{
     key: "render",
     value: function render() {
       return _react.default.createElement(_reactRedux.Provider, {
@@ -55158,13 +55255,13 @@ var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return MyFlixApplication;
+  return CineFanApplication;
 }(_react.default.Component); // Find the root of our app
 
 
 var container = document.getElementsByClassName('app-container')[0]; // Tell React to render our app in the root DOM element
 
-_reactDom.default.render(_react.default.createElement(MyFlixApplication), container);
+_reactDom.default.render(_react.default.createElement(CineFanApplication), container);
 },{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","redux":"../node_modules/redux/es/redux.js","react-redux":"../node_modules/react-redux/es/index.js","./components/main-view/main-view":"components/main-view/main-view.jsx","./reducers/reducers":"reducers/reducers.jsx","./index.scss":"index.scss"}],"../../../../../.nvm/versions/node/v14.15.1/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -55193,7 +55290,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63083" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49184" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

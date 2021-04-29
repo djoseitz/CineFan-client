@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Row, Col } from "react-bootstrap";
 import "./movies-list.scss";
+import VisibilityFilterInput from "../visibility-filter-input/visibility-filter-input";
 
 import { MovieCard } from "../movie-card/movie-card";
 
@@ -24,6 +25,11 @@ function MoviesList(props) {
 
   return (
     <div className="movies-list">
+      {/* Search bar */}
+      <VisibilityFilterInput
+        className="mr-sm-2"
+        visibilityFilter={visibilityFilter}
+      />
       <Row className="justify-content-center">
         {filteredMovies.map((m, index) => (
           <Col key={index} className="main-card" lg="3" md="4" sm="6" xs="10">

@@ -131,12 +131,12 @@ class MainView extends React.Component {
               className="justify-content-end"
               id="basic-navbar-nav"
             >
-              <Form inline>
+              {/* <Form inline>
                 <VisibilityFilterInput
                   className="mr-sm-2"
                   visibilityFilter={visibilityFilter}
                 />
-              </Form>
+              </Form> */}
               {!user ? (
                 <ul>
                   <Link to={`/`}>
@@ -157,11 +157,6 @@ class MainView extends React.Component {
                       Movies
                     </Button>
                   </Link>
-                  {/* <Link to={`/about`}>
-                    <Button variant="link" className="navbar-link">
-                      About
-                    </Button>
-                  </Link> */}
                   <Link to={`/users/${user}`}>
                     <Button variant="link" className="navbar-link">
                       My Account

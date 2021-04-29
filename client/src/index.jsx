@@ -12,7 +12,7 @@ import './index.scss';
 const store = createStore(moviesApp);
 
 // Main component (will eventually use all the others)
-class MyFlixApplication extends React.Component {
+class CineFanApplication extends React.Component {
   render() {
     return(
     <Provider store={store}>
