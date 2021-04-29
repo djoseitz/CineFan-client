@@ -350,6 +350,11 @@ a :hover {
   margin-left: 50px !important;
   margin-bottom: 20px !important;
 }
+
+.form-control {
+  margin: 50px 60px 50px 70px;
+  max-width: 1630px;
+}
 .cine-fan {
   color: steelblue;
 }
