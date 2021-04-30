@@ -63,7 +63,7 @@ var auth = require("./auth")(app);
 
 //List of all movies
 app.get("/", function (req, res) {
-  res.send("Welcome to Flix Fix!");
+  res.send("Welcome to CineFan!");
 });
 
 app.get("/movies", passport.authenticate("jwt", { session: false }), function (
