@@ -90,7 +90,7 @@ export function RegistrationView(props) {
       .then((res) => {
         const data = res.data;
         props.onLoggedIn(data);
-        window.open("/client", "_self");
+        window.open("/", "_self");
       })
       .catch((e) => {
         console.log("No such user", e);

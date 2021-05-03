@@ -100,7 +100,7 @@ class MainView extends React.Component {
     });
     console.log("logout successful");
     alert("You have been successfully logged out");
-    window.open("/client", "_self");
+    window.open("/", "_self");
   }
 
   render() {
@@ -114,7 +114,7 @@ class MainView extends React.Component {
     // if (!movies) return <div className="main-view" />;
 
     return (
-      <Router basename="/client">
+      <Router basename="/">
         <div className="main-view">
           <Navbar
             expand="lg"
