@@ -123,7 +123,7 @@ class MainView extends React.Component {
             expand="lg"
             className="navbar shadow-sm mb-5"
           >
-            <Navbar.Brand href={`/client`} className="navbar-brand">
+            <Navbar.Brand href={`#`} className="navbar-brand">
               CineFan
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -166,7 +166,7 @@ class MainView extends React.Component {
                     <Button
                       variant="link"
                       className="navbar-link"
-                      onClick={() => this.logOut()} href='/client'
+                      onClick={() => this.logOut()} href='#'
                     >
                       Sign Out
                     </Button>
