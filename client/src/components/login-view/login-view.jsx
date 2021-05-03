@@ -46,6 +46,7 @@ export function LoginView(props) {
           <Form.Label className="label">Username:</Form.Label>
           <Form.Control
             type="text"
+            classname="login-field"
             placeholder="Enter username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}

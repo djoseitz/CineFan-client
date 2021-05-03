@@ -26,10 +26,11 @@ function MoviesList(props) {
   return (
     <div className="movies-list">
       {/* Search bar */}
-      <VisibilityFilterInput
-        className="mr-sm-2"
-        visibilityFilter={visibilityFilter}
-      />
+      <div className="search-bar">
+        <VisibilityFilterInput
+          visibilityFilter={visibilityFilter}
+        />
+      </div>
       <Row className="justify-content-center">
         {filteredMovies.map((m, index) => (
           <Col key={index} className="main-card" lg="3" md="4" sm="6" xs="10">
