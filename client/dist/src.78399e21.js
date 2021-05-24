@@ -53758,7 +53758,7 @@ function RegistrationView(props) {
     }).then(function (res) {
       var data = res.data;
       props.onLoggedIn(data);
-      window.open("/client", "_self");
+      window.open("/", "_self");
     }).catch(function (e) {
       console.log("No such user", e);
     });
@@ -54397,7 +54397,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
           alert(user + " has been deleted");
           localStorage.removeItem("user");
           localStorage.removeItem("token");
-          window.location.pathname = "/client";
+          window.location.pathname = "/";
         }).catch(function (error) {
           console.log(error);
         });
@@ -54608,7 +54608,7 @@ function ProfileUpdate(props) {
         localStorage.setItem("user", data.Username); // props.setUsername(data.Username);
 
         alert("Your profile was updated successfully");
-        window.open("/client", "_self");
+        window.open("/", "_self");
       }).catch(function (e) {
         console.log(e);
         alert("Username contains non alphanumeric characters - not allowed");
@@ -54991,7 +54991,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       });
       console.log("logout successful");
       alert("You have been successfully logged out");
-      window.open("/client", "_self");
+      window.open("/", "_self");
     }
   }, {
     key: "render",
@@ -55008,7 +55008,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       // if (!movies) return <div className="main-view" />;
 
       return _react.default.createElement(_reactRouterDom.BrowserRouter, {
-        basename: "/client"
+        basename: "/"
       }, _react.default.createElement("div", {
         className: "main-view"
       }, _react.default.createElement(_Navbar.default, (_React$createElement = {
@@ -55292,7 +55292,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53063" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63025" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
