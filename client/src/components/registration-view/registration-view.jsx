@@ -67,8 +67,8 @@ export function RegistrationView(props) {
           login(response.data);
         })
         .catch((e) => {
-          console.log(e.response);
-          // alert("");
+          console.log(e.response.data);
+          alert(e.response.data);
         });
     }
   };
@@ -113,7 +113,7 @@ export function RegistrationView(props) {
       isValid = false;
     }
 
-    if (!Email.includes(".") && !email.includes("@")) {
+    if (!Email.includes(".") && !Email.includes("@")) {
       emailErr.emailNotEmail = "A valid email address is required";
       isValid = false;
     }

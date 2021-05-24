@@ -53737,7 +53737,8 @@ function RegistrationView(props) {
         console.log(response.data);
         login(response.data);
       }).catch(function (e) {
-        console.log(e.response); // alert("");
+        console.log(e.response.data);
+        alert(e.response.data);
       });
     }
   };
@@ -53780,7 +53781,7 @@ function RegistrationView(props) {
       isValid = false;
     }
 
-    if (!Email.includes(".") && !email.includes("@")) {
+    if (!Email.includes(".") && !Email.includes("@")) {
       emailErr.emailNotEmail = "A valid email address is required";
       isValid = false;
     }
@@ -55292,7 +55293,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63025" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63384" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
