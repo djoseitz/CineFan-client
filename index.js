@@ -234,12 +234,13 @@ app.put(
   "/users/:Username",
 
   (req, res) => {
+    var hashedPassword = Users.hashPassword(req.body.Password);
     Users.findOneAndUpdate(
       { Username: req.params.Username },
       {
         $set: {
           Username: req.body.Username,
-          Password: req.body.Password,
+          Password: hashedPassword,
           Email: req.body.Birthday,
         },
       },
